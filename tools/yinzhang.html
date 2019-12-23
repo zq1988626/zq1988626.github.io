@@ -12,7 +12,7 @@
         <a ref="downloadele"></a>
         <button @click="downloadIMG">下载PNG</button>
         <button @click="downloadSVG">下载SVG</button>
-        
+        <button @click="getURL">生成分享地址</button>
         <div>
             边宽：<input type="number" v-model.number="border">
         </div>
@@ -67,30 +67,33 @@
 <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
 <script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
 <script type="text/javascript">
+    var p = window.location.search.split("p=");
+    p = p[1]&&JSON.parse(decodeURIComponent(p[1].split("&")[0]))||{
+        width:400,
+        size:114,
+        border:2,
+        
+        name:"宇宙和平委员会",
+        namesize:28,
+        namerotate_s:-112,
+        namerotate_e:160,
+        namer:-33,
+
+        number:"888888888888",
+        numbersize:10,
+        numberr:51,
+        numberrotate_s:33,
+        numberrotate_e:-45,
+        svgcode:'',
+
+        subtext:"吹牛专用",
+        subtextsize:22,
+        subtext_y:29
+    };
+    
     var vm = new Vue({
         el: '#app',
-        data: {
-            width:400,
-            size:114,
-            border:2,
-            
-            name:"宇宙和平委员会",
-            namesize:28,
-            namerotate_s:-112,
-            namerotate_e:160,
-            namer:-33,
-
-            number:"888888888888",
-            numbersize:10,
-            numberr:51,
-            numberrotate_s:33,
-            numberrotate_e:-45,
-            svgcode:'',
-
-            subtext:"吹牛专用",
-            subtextsize:22,
-            subtext_y:29
-        },
+        data: p,
         computed:{
             numberlist(){
                 var s = (this.numberrotate_s-this.numberrotate_e)/this.number.length
@@ -143,6 +146,9 @@
             }
         },
         methods:{
+            getURL(){
+                window.open(window.location.pathname+"?p="+window.encodeURIComponent(JSON.stringify(this.$data)));
+            },
             downloadSVG(){
                 var code = document.getElementsByTagName("svg")[0].outerHTML;
                 code = 'data:text/plain;charset=utf-8,' + encodeURIComponent(code);
