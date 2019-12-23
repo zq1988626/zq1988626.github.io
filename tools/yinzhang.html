@@ -12,7 +12,7 @@
         <a ref="downloadele"></a>
         <button @click="downloadIMG">下载PNG</button>
         <button @click="downloadSVG">下载SVG</button>
-        <button @click="getURL">生成分享地址</button>
+        <button @click="getURL">生成并打开此设计网址</button>
         <div>
             边宽：<input type="number" v-model.number="border">
         </div>
@@ -90,7 +90,7 @@
         subtextsize:22,
         subtext_y:29
     };
-    
+
     var vm = new Vue({
         el: '#app',
         data: p,
