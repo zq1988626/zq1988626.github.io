@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .noselect{
+            -webkit-user-select:none;
+            -moz-user-select:none;
+            -ms-user-select:none;
+            user-select:none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!--购物车-->
+        <div v-if="showout" style="position:fixed;z-index: 1;top:0;left:0;bottom:0;right:0;">
+            <div class="noselect" style="position: absolute;right:0;top:0;">
+                <a href="javascript:void(0)"><label><input v-model="outtype" type="radio" name="outtype" value="tag" />标签</label></a>
+                <a href="javascript:void(0)"><label><input v-model="outtype" type="radio" name="outtype" value="require" />require</label></a>
+                <a href="javascript:void(0)"><label><input v-model="outtype" type="radio" name="outtype" value="html" />html</label></a>
+                <a href="javascript:void(0)" @click="showout=false">close</a>
+            </div>
+            <textarea style="height: 100%;width:100%;padding: 0;" v-model="outcode" readonly></textarea>
+        </div>
+
+        <!--购物车-->
+        <div style="right: 0px;
+        top: 0px;
+        position: fixed;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        padding: 10px;">
+            <div style="display: flex;">
+                <div style="flex:1;">已选列表[{{selectedlist.length}}]</div>
+                <a v-if="selectedlist.length" href="javascript:void(0)" @click="showSelected=!showSelected">
+                    <span v-if="showSelected">收起</span><span v-else>展开</span>
+                </a>
+            </div>
+            <div v-if="showSelected">
+                <div v-for="item in selectedlist">
+                    <a href="javascript:void(0)" style="padding:0 5px;" @click="selected[item]=false">X</a>{{item}}
+                </div>
+                <div>
+                    <a href="javascript:void(0)" @click="showout=true;outtype='tag';">生成标签列表</a>
+                    <a href="javascript:void(0)" @click="showout=true;outtype='html';">生成HTML</a>
+                    <a href="javascript:void(0)" @click="showout=true;outtype='require';">生成requirejs引用</a>
+                </div>
+            </div>
+        </div>
+        总量:{{libcount}}
+        <input v-model="searchText" @keyup="searchTextChange" />
+        <div v-if="currentLib && currentDeatil">
+            <a href="javascript:void(0);" @click="currentLib=''">close</a>
+            <div>{{currentDeatil.name}}</div>
+            <div>{{currentDeatil.version}}</div>
+            <div>{{currentDeatil.description}}</div>
+            <div>{{currentDeatil.keywords}}</div>
+            <div><a :href="currentDeatil.homepage">官网</a></div>
+            <div v-if="currentDeatil.repository">{{currentDeatil.repository.type}}:<a :href="currentDeatil.repository.url">源码</a></div>
+            <div>{{currentDeatil.license}}</div>
+            <div>
+                <table>
+                    <tr v-for="item in currentDeatil.assets">
+                        <td style="vertical-align: top;">{{item.version}}</td>
+                        <td>
+                            <table>
+                                <tr v-for="file in item.files">
+                                    <td>
+                                        <label>
+                                            <input type="checkbox" v-model="selected['https://cdn.bootcss.com/'+currentDeatil.name+'/'+item.version+'/'+file]">
+                                            {{file}}
+                                            <a target="_blank" :href="'https://cdn.bootcss.com/'+currentDeatil.name+'/'+item.version+'/'+file">
+                                                打开
+                                            </a>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <table v-else>
+            <thead>
+                <tr><th>名称</th><th>介绍</th></tr>
+            </thead>
+            <tr v-for="item in searchList" :key="item[0]">
+                <td style="white-space: nowrap;">
+                    <a href="javascript:void(0);" @click="currentLib=item[0];showDetail(item[0]);">{{item[0]}}</a>
+                </td>
+                <td>{{searchListfy[item[0]]||item[1]}}</td>
+            </tr>
+        </table>
+    </div>
+    <script src="https://cdn.bootcss.com/require.js/2.3.6/require.min.js"></script>
+    <script>
+        var salt = Math.random();
+        var appid = "20171222000107452";
+        var p = "Wh8tcZ3wEC86b0QWfUzm";
+        var fycout = 0;
+        var fanyi = function(q,sign){
+            return new Promise(function(resolve,reject){
+                fycout++;
+                console.log(fycout*1100+"ms 后请求");
+                setTimeout(function(){
+                    console.log("请求");
+                    $.ajax({
+                        url: 'http://api.fanyi.baidu.com/api/trans/vip/translate',
+                        method: 'get',
+                        dataType: 'jsonp',
+                        data: {
+                            q: q,
+                            appid: appid,
+                            salt: salt,
+                            from:"auto",
+                            to:"auto",
+                            sign: sign
+                        },
+                        success: function (data) {
+                            fycout--;
+                            if(data&&data.trans_result&&data.trans_result[0]){
+                                resolve(data.trans_result[0].dst);
+                            }else{
+                                console.error(data);
+                                throw "返回异常";
+                            }
+                        },
+                        error:function(error){
+                            throw error;
+                        }
+                    })
+                },fycout*1100)
+            })
+        }
+
+        requirejs([
+            "https://cdn.bootcss.com/vue/2.6.10/vue.min.js",
+            "https://cdn.bootcss.com/spark-md5/3.0.0/spark-md5.js",
+            "https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"
+        ],function(Vue,SparkMD5){
+            var ter = function(q){
+                var sign = SparkMD5.hash(appid+q+salt+p);
+                return fanyi(q,sign)
+            }
+            Promise.all([
+                getJSON("https://api.bootcdn.cn/libraries.min.json"),
+                getJSON("https://api.bootcdn.cn/names.min.json")
+            ]).then(function(data){
+                var libraries = data[0];
+                var names = data[1];
+                new Vue({
+                    el:"#app",
+                    data:function(){
+                        return {
+                            showout:false,
+                            outtype:"tag",
+                            showSelected:false,
+                            currentLib:"",
+                            searchText:"",
+                            libcount:libraries.length,
+                            currentDeatil:{},
+                            selected:{},
+                            searchList:[],
+                            searchListfy:{}
+                        }
+                    },
+                    computed:{
+                        outcode:function(){
+                            if(this.outtype=="tag"){
+                                return getScriptTag(this.selectedlist).join("\n")+"\n"+
+                                getCssTag(this.selectedlist).join("\n")
+                            }else if(this.outtype=="html"){
+                                return genHTML(this.selectedlist)
+                            }else if(this.outtype=="require"){
+                                return genRequireHTML(this.selectedlist)
+                            }
+                            return this.selectedlist.join("\n")
+                        },
+                        selectedlist:function(){
+                            var rev = [];
+                            for(var a in this.selected){
+                                if(this.selected[a]){
+                                    rev.push(a)
+                                }
+                            }
+                            return rev;
+                        }
+                    },
+                    methods:{
+                        searchTextChange:function(event){
+                            this.setSearchList(this.searchText);
+                        },
+                        setSearchList:function(value){
+                            var rev = [];
+                            var word = new RegExp(value,"i")
+                            var _this = this;
+                            for(var i=0;i<libraries.length;i++){
+                                if(word.test(libraries[i][0])|| word.test(libraries[i][1])){
+                                    rev.push(libraries[i]);
+                                    if(typeof this.searchListfy[libraries[i][0]] == "undefined"){
+                                        (function(libname,text){
+                                            _this.searchListfy[libname] = false;
+                                            ter(text)
+                                            .then(function(data){
+                                                _this.searchListfy[libname]=data
+                                            })
+                                        })(libraries[i][0],libraries[i][1]);
+                                    }
+                                    if(rev.length>=10){
+                                        break;
+                                    }
+                                }
+                            }
+
+                            this.searchList = rev;
+                        },
+                        showDetail:function(name){
+                            var _this = this;
+                            getLibrarie(name).then(function(data){
+                                if(name==_this.currentLib){
+                                    _this.currentDeatil = data;
+                                }
+                            })
+                        }
+                    }
+                })
+            })
+        })
+        var getLibrarie = function(name){
+            return getJSON("https://api.bootcdn.cn/libraries/"+name+".min.json")
+        }
+        var getJSON = function(url){
+            return new Promise(function(resolve,reject){
+                $.getJSON(url,function(data){
+                    resolve(data)
+                })
+            })
+        }
+        var showTags = function(){
+
+        }
+        
+        var filterjs = function(list){
+            return list.filter(function(item){
+                return item.substr(-3,3)==".js"
+            })
+        }
+        var getScriptTag = function(list){
+            return filterjs(list).map(function(item){
+                return '<script src="'+item+'"><'+'/script>'
+            })
+        }
+        var filtercss = function(list){
+            return list.filter(function(item){
+                return item.substr(-4,4)==".css"
+            })
+        }
+        var getCssTag = function(list){
+            return filtercss(list).map(function(item){
+                return '<link rel="stylesheet" href="'+item+'">'
+            })
+        }
+
+        var genCode = function(csstags,jstags){
+            return '<!DOCTYPE html>\n\
+<html>\n\
+<head>\n\
+    <meta charset="UTF-8">\n\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n\
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">\n\
+    <title>Document</title>\n\
+'+(csstags.length?'    ':'')+csstags.join("\n    ")+(csstags.length?'\n\
+':"")+'</head>\n\
+<body>\n\
+'+(jstags.length?'    ':'')+jstags.join("\n    ")+(jstags.length?'\n\
+':"")+'</body>\n\
+</html>'
+        }
+
+        var genHTML=function(selectedlist){
+            var csstags = getCssTag(selectedlist)
+            var jstags = getScriptTag(selectedlist)
+            return genCode(csstags,jstags);
+        }
+
+        var genRequireHTML=function(selectedlist){
+            var csstags = getCssTag(selectedlist)
+            var tags = filterjs(selectedlist);
+            var jstags = getScriptTag(['https://cdn.bootcss.com/require.js/2.3.6/require.min.js']);
+            jstags.push(
+'<script>\n\
+        requirejs([\n\
+            '+tags.map(function(item){return '"'+item+'"'}).join(",\n            ")+'\n\
+        ],function(){\n\
+            \n\
+            // ToDo something\n\
+            \n\
+        })\n\
+<'+'/script>');
+            return genCode(csstags,jstags)
+        }
+    </script>
+</body>
+</html>
