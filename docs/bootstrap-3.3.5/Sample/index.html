@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Bootstrap 简单示例</title>
+    <script src="dist/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="dist/js/bootstrap.min.js" type="text/javascript"></script>
+    <link href="dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="index.css" rel="stylesheet" type="text/css" />
+    <link href="dist/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .accordion-group {border:1px solid #333; padding:10px; margin-top:10px;}
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="accordion" id="accordion-484176">
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						 <div class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-484176" href="#accordion-element-460307">
+                            <table style=" width:100%; white-space:nowrap;">
+                                <tr>
+                                    <td style=" text-align:right;">热值：</td>
+                                    <td><span style=" font-size:20px; font-weight:bold; padding-right:3px;">678.55</span>Kcal/Kg</td>
+                                    <td style=" text-align:center;font-size:20px; font-weight:bold;">#1煤场</td>
+                                </tr>
+                                <tr>
+                                    <td style=" text-align:right;">存煤量：</td>
+                                    <td><span style=" font-size:20px; font-weight:bold; padding-right:3px;">200,000</span>吨</td>
+                                    <td rowspan="2" style=" text-align:center;">
+                                        <button onclick="alert('显示明细');event.stopPropagation();">明细</button>
+                                        <button>详情</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style=" text-align:right;">天然煤价：</td>
+                                    <td><span style=" font-size:20px; font-weight:bold; padding-right:3px;">508.95</span>元</td>
+                                </tr>
+                            </table>
+                         </div>
+					</div>
+					<div id="accordion-element-460307" class="accordion-body collapse">
+						<div class="accordion-inner placeholder row-fluid placeholders">
+                            <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="200x200" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzBEOEZEQiIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjEwMCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojZmZmO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEzcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MjAweDIwMDwvdGV4dD48L3N2Zz4=">
+                        </div>
+					</div>
+				</div>
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						 <div class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-484176" href="#accordion-element-281462">
+                            <table>
+                                <tr>
+                                    <td>热值</td>
+                                    <td>678.55 Kcal/Kg</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>存煤量</td>
+                                    <td>200,000 吨</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>天然煤价</td>
+                                    <td>508.95 元</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                         </div>
+					</div>
+					<div id="accordion-element-281462" class="accordion-body collapse">
+						<div class="accordion-inner">
+							功能块...
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

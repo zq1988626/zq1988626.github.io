@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			(function(global){
+				global.fcp = global.fcp||{};
+				if(global.fcp.setTimeout) return;
+				
+				var _native = global["setTimeout"];
+				global.fcp.setTimeout = function(){
+					var id = _native.apply(global,arguments);
+				}
+				var _native = global["setTimeout"];
+				var id = _native.apply(global,args);
+				
+				var hijacking = function(name,fun){
+					var _native = global[name];
+					global[name]=function(){
+						var args = fun.apply(global,arguments);
+						return _native.apply(global,args);
+					}
+				}
+				
+				global.setTimeoutCount = 0;
+				hijacking("setTimeout",function(fn,times){
+					global.setTimeoutCount++;
+					return [function(){
+						try{fn();}catch(ex){}
+						global.setTimeoutCount--;
+					},times||20]
+				});
+				return;
+				var _setTimeout = global.setTimeout;
+				global.setTimeout=function(){
+					
+				}
+			})(window);
+			
+			window.setTimeout(function(){
+				console.log(setTimeoutCount);
+			},1000);
+			window.setTimeout(function(){
+				console.log(setTimeoutCount);
+			},2000);
+			window.setTimeout(function(){
+				console.log(setTimeoutCount);
+			},3000);
+			window.setTimeout(function(){
+				console.log(setTimeoutCount);
+			},4000);
+			window.setTimeout(function(){
+				console.log(setTimeoutCount);
+			},5000);
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

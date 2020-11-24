@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        
+        a:link {color: #FF0000}		/* 未访问的链接 */
+        a:visited {color: #00FF00}	/* 已访问的链接 */
+        a:hover {color: #FF00FF}	/* 鼠标移动到链接上 */
+        a:active {color: #0000FF}	/* 选定的链接 */
+        
+    </style>
+
+    <script type="text/javascript">
+//Window 事件属性
+        //        onafterprint	script	文档打印之后运行的脚本。
+        //        onbeforeprint	script	文档打印之前运行的脚本。
+        //        onbeforeunload	script	文档卸载之前运行的脚本。
+        //        onerror	script	在错误发生时运行的脚本。
+        //        onhaschange	script	当文档已改变时运行的脚本。
+        //        onload	script	页面结束加载之后触发。
+        //        onmessage	script	在消息被触发时运行的脚本。
+        //        onoffline	script	当文档离线时运行的脚本。
+        //        ononline	script	当文档上线时运行的脚本。
+        //        onpagehide	script	当窗口隐藏时运行的脚本。
+        //        onpageshow	script	当窗口成为可见时运行的脚本。
+        //        onpopstate	script	当窗口历史记录改变时运行的脚本。
+        //        onredo	script	当文档执行撤销（redo）时运行的脚本。
+        //        onresize	script	当浏览器窗口被调整大小时触发。
+        //        onstorage	script	在 Web Storage 区域更新后运行的脚本。
+        //        onundo	script	在文档执行 undo 时运行的脚本。
+        //        onunload	script	一旦页面已下载时触发（或者浏览器窗口已被关闭）。
+
+
+    </script>
+
+
+    
+    <style type="text/css">
+    #div1 {width:488px;height:70px;padding:10px;border:1px solid #aaaaaa;}
+    </style>
+    <script type="text/javascript">
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("Text", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("Text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+    </script>
+</head>
+<body>
+    <a href="http://www.w3school.com.cn">W3School</a>
+    <table class="dataintable" 
+        style="margin: 10px 0px 0px; padding: 0px; border: 1px solid rgb(170, 170, 170); border-collapse: collapse; width: 708.889px; color: rgb(0, 0, 0); font-family: Verdana, Arial, 宋体; font-size: 13.3333px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(249, 249, 249);">
+        <tbody style="margin: 0px; padding: 0px; border: 0px;">
+            <tr style="margin: 0px; padding: 0px; border: 0px;">
+                <th style="margin: 0px; padding: 5px 15px 5px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: baseline; text-align: left; width: 91.2326px; background-color: rgb(213, 213, 213);">
+                    </th>
+                <th style="margin: 0px; padding: 5px 15px 5px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: baseline; text-align: left; width: 91.2326px; background-color: rgb(213, 213, 213);">
+                    IE 9</th>
+                <th style="margin: 0px; padding: 5px 15px 5px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: baseline; text-align: left; width: 91.2326px; background-color: rgb(213, 213, 213);">
+                    Firefox 3.5</th>
+                <th style="margin: 0px; padding: 5px 15px 5px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: baseline; text-align: left; width: 91.2326px; background-color: rgb(213, 213, 213);">
+                    Opera 10.5</th>
+                <th style="margin: 0px; padding: 5px 15px 5px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: baseline; text-align: left; width: 91.2326px; background-color: rgb(213, 213, 213);">
+                    Chrome 3.0</th>
+                <th style="margin: 0px; padding: 5px 15px 5px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: baseline; text-align: left; width: 91.2326px; background-color: rgb(213, 213, 213);">
+                    Safari 3.0</th>
+            </tr>
+            <tr style="margin: 0px; padding: 0px; border: 0px;">
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    Ogg Vorbis</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    &nbsp;</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    √</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    √</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    √</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    &nbsp;</td>
+            </tr>
+            <tr style="margin: 0px; padding: 0px; border: 0px;">
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    MP3</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    √</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    &nbsp;</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    &nbsp;</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    √</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    √</td>
+            </tr>
+            <tr style="margin: 0px; padding: 0px; border: 0px;">
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    Wav</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    &nbsp;</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    √</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    √</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    &nbsp;</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    √</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <audio src="song.ogg" controls="controls">
+    Your browser does not support the audio tag.
+    </audio>
+
+    <div style="text-align:center;">
+      <button onclick="playPause()">播放/暂停</button> 
+      <button onclick="makeBig()">大</button>
+      <button onclick="makeNormal()">中</button>
+      <button onclick="makeSmall()">小</button>
+      <br /> 
+      <video id="video1" width="420" style="margin-top:15px;" controls="controls">
+        <source src="/example/html5/mov_bbb.mp4" type="video/mp4" />
+        <source src="/example/html5/mov_bbb.ogg" type="video/ogg" />
+        Your browser does not support HTML5 video.
+      </video>
+    </div>
+
+    <table class="dataintable" style="margin: 10px 0px 0px; padding: 0px; border: 1px solid rgb(170, 170, 170); border-collapse: collapse; width: 708.889px; color: rgb(0, 0, 0); font-family: Verdana, Arial, 宋体; font-size: 13.3333px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 1; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(249, 249, 249);">
+        <tbody style="margin: 0px; padding: 0px; border: 0px;">
+            <tr style="margin: 0px; padding: 0px; border: 0px;">
+                <th style="margin: 0px; padding: 5px 15px 5px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: baseline; text-align: left; background-color: rgb(213, 213, 213);">
+                    格式</th>
+                <th style="margin: 0px; padding: 5px 15px 5px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: baseline; text-align: left; width: 91.2326px; background-color: rgb(213, 213, 213);">
+                    IE</th>
+                <th style="margin: 0px; padding: 5px 15px 5px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: baseline; text-align: left; width: 91.2326px; background-color: rgb(213, 213, 213);">
+                    Firefox</th>
+                <th style="margin: 0px; padding: 5px 15px 5px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: baseline; text-align: left; width: 91.2326px; background-color: rgb(213, 213, 213);">
+                    Opera</th>
+                <th style="margin: 0px; padding: 5px 15px 5px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: baseline; text-align: left; width: 91.2326px; background-color: rgb(213, 213, 213);">
+                    Chrome</th>
+                <th style="margin: 0px; padding: 5px 15px 5px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: baseline; text-align: left; width: 91.2326px; background-color: rgb(213, 213, 213);">
+                    Safari</th>
+            </tr>
+            <tr style="margin: 0px; padding: 0px; border: 0px;">
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    Ogg</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    No</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    3.5+</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    10.5+</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    5.0+</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    No</td>
+            </tr>
+            <tr style="margin: 0px; padding: 0px; border: 0px;">
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    MPEG 4</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    9.0+</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    No</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    No</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    5.0+</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    3.0+</td>
+            </tr>
+            <tr style="margin: 0px; padding: 0px; border: 0px;">
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    WebM</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    No</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    4.0+</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    10.6+</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    6.0+</td>
+                <td style="margin: 0px; padding: 6px 15px 6px 6px; border: 1px solid rgb(170, 170, 170); vertical-align: text-top; background-color: rgb(239, 239, 239);">
+                    No</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    
+
+    <p>请把 W3School 的图片拖放到矩形中：</p>
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <br />
+    <img id="drag1" src="res/img/table_bg_html5.gif" draggable="true" ondragstart="drag(event)" />
+</body>
+</html>
+
+<script type="text/javascript">
+    var myVideo = document.getElementById("video1");
+    function playPause() {
+        if (myVideo.paused)
+            myVideo.play();
+        else
+            myVideo.pause();
+    }
+    function makeBig() {
+        myVideo.width = 560;
+    }
+    function makeSmall() {
+        myVideo.width = 320;
+    }
+    function makeNormal() {
+        myVideo.width = 420;
+    } 
+</script> 

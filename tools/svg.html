@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../lib/vue.min.js"></script>
+		<style>
+			html {
+				font-family: sans-serif;
+				-ms-text-size-adjust: 100%;
+				-webkit-text-size-adjust: 100%
+			}
+			
+			body {
+				margin: 0
+			}
+			
+			table {
+				border-collapse: collapse;
+				border-spacing: 0
+			}
+			
+			td,
+			th {
+				padding: 0
+			}
+			
+			*,
+			:after,
+			:before {
+				box-sizing: border-box
+			}
+			
+			html {
+				font-size: 10px;
+				-webkit-tap-highlight-color: transparent
+			}
+			
+			body {
+				font-family: Helvetica Neue, Helvetica, Arial, PingFang SC, Hiragino Sans GB, WenQuanYi Micro Hei, Microsoft Yahei, sans-serif;
+				font-size: 14px;
+				line-height: 1.5;
+				color: #333;
+				background-color: #fff
+			}
+			
+			button,
+			input,
+			select,
+			textarea {
+				font-family: inherit;
+				font-size: inherit;
+				line-height: inherit
+			}
+			
+			a {
+				color: #009a61;
+				text-decoration: none
+			}
+			
+			a:focus,
+			a:hover {
+				color: #004e31;
+				text-decoration: underline
+			}
+			
+			a:focus {
+				outline: thin dotted;
+				outline: 5px auto -webkit-focus-ring-color;
+				outline-offset: -2px
+			}
+			
+			figure {
+				margin: 0
+			}
+			
+			img {
+				vertical-align: middle
+			}
+			
+			hr {
+				margin-top: 21px;
+				margin-bottom: 21px;
+				border: 0;
+				border-top: 1px solid #eee
+			}
+			table {
+				background-color: transparent
+			}
+			
+			th {
+				text-align: left
+			}
+			
+			
+			
+			fieldset {
+				margin: 0;
+				min-width: 0
+			}
+			
+			fieldset,
+			legend {
+				padding: 0;
+				border: 0
+			}
+			
+			legend {
+				display: block;
+				width: 100%;
+				margin-bottom: 21px;
+				font-size: 21px;
+				line-height: inherit;
+				color: #333;
+				border-bottom: 1px solid #e5e5e5
+			}
+			
+			label {
+				display: inline-block;
+				max-width: 100%;
+				margin-bottom: 5px;
+				font-weight: 700
+			}
+			
+			input[type=search] {
+				box-sizing: border-box
+			}
+			
+			input[type=checkbox],
+			input[type=radio] {
+				margin: 4px 0 0;
+				margin-top: 1px\9;
+				line-height: normal
+			}
+			
+			input[type=file] {
+				display: block
+			}
+			
+			input[type=range] {
+				display: block;
+				width: 100%
+			}
+			
+			select[multiple],
+			select[size] {
+				height: auto
+			}
+			
+			input[type=checkbox]:focus,
+			input[type=file]:focus,
+			input[type=radio]:focus {
+				outline: thin dotted;
+				outline: 5px auto -webkit-focus-ring-color;
+				outline-offset: -2px
+			}
+			
+			output {
+				padding-top: 7px
+			}
+			
+			.fmt {
+				line-height: 1.6;
+				word-wrap: break-word
+			}
+			
+			.fmt h1 {
+				font-size: 2.25em
+			}
+			
+			.fmt h2 {
+				font-size: 1.75em
+			}
+			
+			.fmt h3 {
+				font-size: 1.5em
+			}
+			
+			.fmt h4 {
+				font-size: 1.25em
+			}
+			
+			.fmt h5 {
+				font-size: 1em
+			}
+			
+			.fmt h6 {
+				font-size: .86em
+			}
+			
+			.fmt blockquote,
+			.fmt h4,
+			.fmt h5,
+			.fmt ol,
+			.fmt p,
+			.fmt pre,
+			.fmt table,
+			.fmt ul {
+				margin: 1.5em 0
+			}
+			
+			.fmt h1,
+			.fmt h2,
+			.fmt h3 {
+				margin: 1.5em 0 0
+			}
+			
+			.fmt h1+.widget-codetool+pre,
+			.fmt h2+.widget-codetool+pre,
+			.fmt h3+.widget-codetool+pre {
+				margin-top: 1.5em!important
+			}
+			
+			.fmt h1,
+			.fmt h2 {
+				border-bottom: 1px solid #eee;
+				padding-bottom: 10px
+			}
+			
+			.fmt>h1:first-child,
+			.fmt blockquote:first-child,
+			.fmt h2:first-child,
+			.fmt h3:first-child,
+			.fmt h4:first-child,
+			.fmt ol:first-child,
+			.fmt p:first-child,
+			.fmt pre:first-child,
+			.fmt ul:first-child {
+				margin-top: 0
+			}
+			
+			.fmt ol,
+			.fmt ul {
+				margin-left: 3em;
+				padding-left: 0
+			}
+			
+			.fmt ol li,
+			.fmt ul li {
+				margin: .3em 0
+			}
+			
+			.fmt ol ol,
+			.fmt ol ul,
+			.fmt ul ol,
+			.fmt ul ul {
+				margin-top: 0;
+				margin-bottom: 0
+			}
+			
+			.fmt ol p,
+			.fmt ul p {
+				margin: 0
+			}
+			
+			.fmt p:last-child {
+				margin-bottom: 0
+			}
+			
+			.fmt div>br:only-child,
+			.fmt div>div:empty,
+			.fmt div>p:empty,
+			.fmt img+br,
+			.fmt p+br,
+			.fmt p>br:only-child,
+			.fmt p>div:empty,
+			.fmt p>p:empty {
+				display: none
+			}
+			
+			.fmt audio,
+			.fmt img,
+			.fmt video {
+				position: static!important;
+				max-width: 100%
+			}
+			
+			.fmt img {
+				padding: 3px;
+				border: 1px solid #ddd
+			}
+			
+			.fmt img.emoji {
+				padding: 0;
+				border: none
+			}
+			
+			.fmt blockquote {
+				border-left: 2px solid #009a61;
+				background: #f6f6f6;
+				color: #555;
+				font-size: 1em
+			}
+			
+			.fmt code,
+			.fmt pre {
+				font-size: .93em
+			}
+			
+			.fmt pre {
+				padding: 1em;
+				border: none;
+				overflow: auto;
+				line-height: 1.3;
+				max-height: 35em;
+				position: relative;
+				background: url(../img/blueprint.png) #f6f6f6;
+				background-size: 30px, 30px
+			}
+			
+			.fmt pre code {
+				background: none;
+				font-size: 1em;
+				overflow-wrap: normal;
+				white-space: inherit
+			}
+			
+			.fmt hr {
+				margin: 1.5em auto;
+				border-top: 2px dotted #eee
+			}
+			
+			.fmt kbd {
+				margin: 0 4px;
+				padding: 3px 4px;
+				background: #eee;
+				color: #555
+			}
+			
+			.fmt .x-scroll {
+				overflow-x: auto
+			}
+			
+			.fmt table {
+				width: 100%
+			}
+			
+			.fmt table td,
+			.fmt table th {
+				border: 1px solid #e6e6e6;
+				padding: 5px 8px;
+				word-break: normal
+			}
+			
+			.fmt table th {
+				background: #f3f3f3
+			}
+		</style>
+		<style>
+			svg {
+				width: 50px;
+				height: 50px;
+				border: 1px solid #333;
+			}
+			
+			svg path {
+				stroke: blue;
+				stroke-width: 2;
+				fill:#f00
+			}
+			input:not([type]),input[type='range'],input[type='text']{
+				width: 50px;display: inline-block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="fmt">
+			<table>
+				<thead>
+					<tr>
+						<th>command</th>
+						<th>描述</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><code>M(m) x y</code></td>
+						<td><span>移动到(x, y) (小写表示相对于上个坐标的位移, 下同)</span>
+							<svg>
+								<path d="M 10 10"></path>
+							</svg>
+						</td>
+					</tr>
+					<tr>
+						<td><code>L(l) x y</code></td>
+						<td id="path_l">画一条直线到(x, y)
+							m{{mx}}<input type="range" v-model="mx" v-bind:min="0+5" v-bind:max="svgw-5"/>
+							{{my}}<input type="range" v-model="my" v-bind:min="0+5" v-bind:max="svgh-5"/>
+							l {{x}}<input type="range" v-model="x" v-bind:min="-svgw" v-bind:max="svgw"/>
+							{{y}}<input type="range" v-model="y" v-bind:min="-svgh" v-bind:max="svgh"/>
+							<svg>
+								<path v-bind:d="path" stroke="blue" stroke-width="5"></path>
+							</svg>
+							<textarea v-model="html"></textarea>
+							<script>
+								new Vue({
+								  el: '#path_l',
+								  data:{mx:10,my:10,x:30,y:30,svgw:50,svgh:50},
+								  computed: {
+								    path: function() {
+								      return ["m",this.mx,this.my,"l",this.x,this.y].join(" ");
+								    },
+								    html: function() {
+								      return '<path d="'+this.path+'" />';
+								    }
+								  }
+								})
+							</script>
+						</td>
+					</tr>
+					<tr>
+						<td><code>H(h) x</code></td>
+						<td id="path_h">水平画一条直线到 x
+							<svg>
+								<path  v-bind:d="path"d="M 10 10h20" stroke="blue" stroke-width="5"></path>
+							</svg>
+						</td>
+						</td>
+					</tr>
+					<tr>
+						<td><code>V(v) y</code></td>
+						<td>竖直画一条直线到 y
+							<svg>
+								<path d="M 10 10v20" stroke="blue" stroke-width="5"></path>
+							</svg>
+						</td>
+					</tr>
+					<tr>
+						<td><code>A(a) rx ry x-axis-rotation large-arc sweep x y</code></td>
+						<td id="path_a">画一段到(x,y)的椭圆弧. <br/>
+							椭圆弧的 x, y 轴半径分别为 rx,ry. 椭圆相对于 x 轴旋转 x-axis-rotation 度. large-arc=0表明弧线小于180读, large-arc=1表示弧线大于180度. sweep=0表明弧线逆时针旋转, sweep=1表明弧线顺时间旋转. 具体解释看
+							<a>如何绘制椭圆弧</a><br/>
+							m<input type="range" v-model="mx" v-bind:min="0+5" v-bind:max="svgw-5"/>{{mx}}<br/>
+							<input type="range" v-model="my" v-bind:min="0+5" v-bind:max="svgh-5"/>{{my}}<br/>
+							a<input type="range" v-model="rx" v-bind:min="-svgw" v-bind:max="svgw"/>{{rx}}<br/>
+							<input type="range" v-model="ry" v-bind:min="-svgh" v-bind:max="svgh"/>{{ry}}<br/>
+							<input type="range" v-model="xar" v-bind:min="-360" v-bind:max="360"/><br/>
+							<input type="checkbox" v-model="la" v-bind:checked="la?'checked':''"/><br/>
+							<input type="checkbox" v-model="sweep" v-bind:checked="sweep?'checked':''"/><br/>
+							
+							<input type="range" v-model="x" v-bind:min="-svgw" v-bind:max="svgw"/>{{x}}<br/>
+							<input type="range" v-model="y" v-bind:min="-svgh" v-bind:max="svgh"/>{{y}}<br/>
+							<svg v-bind:style="'width:'+svgw+'px;height:'+svgh+'px;'">
+								<path v-bind:d="path"></path>
+							</svg>
+							<textarea v-model="html"></textarea>
+							<script>
+							
+								new Vue({
+								  el: '#path_a',
+								  data:{
+								  	mx:10,
+								  	my:10,
+								  	rx:30,
+								  	ry:5,
+								  	xar:0,
+								  	la:true,
+								  	sweep:true,
+								  	x:30,
+								  	y:0,
+								  	svgw:200,
+								  	svgh:200},
+								  computed: {
+								    path: function() {
+								      return ["m",this.mx,this.my,"a",this.rx,this.ry,this.xar,this.la?1:0,this.sweep?1:0,this.x,this.y].join(" ");
+								    },
+								    html: function() {
+								      return '<path d="'+this.path+'" />';
+								    }
+								  }
+								})
+							</script>
+						</td>
+					</tr>
+					<tr>
+						<td><code>Q(q) cx cy x y</code></td>
+						<td>从当前点画一条到(x, y)的二次
+							<a href="http://www.wikiwand.com/zh-hans/%E8%B2%9D%E8%8C%B2%E6%9B%B2%E7%B7%9A" target="_blank">贝塞尔曲线</a>, 曲线的控制点为(cx, cy). 关于二次贝塞尔曲线请看[二次贝塞尔曲线详解](#articleHeader6
+							<svg>
+								<path d="M 10 20a15 5 0 0 1 30 0z"></path>
+							</svg>
+						</td>
+					</tr>
+					<tr>
+						<td><code>T(t) x y</code></td>
+						<td>此命令只能跟在一个 Q 命令使用, 假设 Q 命令生成曲线 s, T 命令的作用是从 s 的终点再画一条到(x y)的二次贝塞尔曲线, 曲线的控制点为 s 控制点关于 s 终点的对称点. T 命令生成的曲线会非常平滑</td>
+					</tr>
+					<tr>
+						<td><code>C(c) cx1 cy1 cx2 cy2 x y</code></td>
+						<td>从当前点画一条到(x, y)的三次贝塞尔曲线, 曲线的开始控制点和终点控制点为别为 (cx1, cy1), (cx2, cy2). 关于三次贝塞尔曲线请看
+							<a>三次贝塞尔曲线详解</a>
+						</td>
+					</tr>
+					<tr>
+						<td><code>S(s) cx2 cy2 x y</code></td>
+						<td id="path_s">此命令只能跟在 C 命令后使用, 假设 C 命令生成曲线 s, S 命令的作用是再画一条到 (x, y)的三次贝塞尔曲线, 曲线的终点控制点是 (cx2, cy2), 曲线的开始控制点是 s 的终点控制点关于 s 终点的对称点.
+							
+							<br />m<input type="range" v-model="mx" v-bind:min="0+5" v-bind:max="svgw-5"/>{{mx}}
+							<br /><input type="range" v-model="my" v-bind:min="0+5" v-bind:max="svgh-5"/>{{my}}
+							<br />s<input type="range" v-model="x" v-bind:min="-svgw" v-bind:max="svgw"/>{{x}}
+							<br /><input type="range" v-model="y" v-bind:min="-svgh" v-bind:max="svgh"/>{{y}}
+							<br /><input type="range" v-model="x" v-bind:min="-svgw" v-bind:max="svgw"/>{{x}}
+							<br /><input type="range" v-model="y" v-bind:min="-svgh" v-bind:max="svgh"/>{{y}}
+							<svg>
+								<path v-bind:d="path"></path>
+							</svg>
+							<textarea v-model="html"></textarea>
+							<script>
+								new Vue({
+								  el: '#path_s',
+								  data:{mx:10,my:30,cx2:15,cy2:-30,x:30,y:0,svgw:50,svgh:50},
+								  computed: {
+								    path: function() {
+								      return ["m",this.mx,this.my,"s",this.cx2,this.cy2,this.x,this.y].join(" ");
+								    },
+								    html: function() {
+								      return '<path d="'+this.path+'" />';
+								    }
+								  }
+								})
+							</script>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<table>
+				<thead>
+					<tr>
+						<th>transform</th>
+						<th>描述</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><code>translate(x, y)</code></td>
+						<td>
+							<strong>平移</strong>: 将用户坐标系统的坐标原点移动到(x, y)</td>
+					</tr>
+					<tr>
+						<td><code>scale(xFactor, yFactor)</code></td>
+						<td>
+							<strong>缩放</strong>: 将用户坐标系统的xy轴单位长度分别乘(xFactor, yFactor)倍</td>
+					</tr>
+					<tr>
+						<td><code>scale(factor)</code></td>
+						<td>
+							<strong>缩放</strong>: 同 <code>scale(factor, factor)</code>
+						</td>
+					</tr>
+					<tr>
+						<td><code>rotate(angle, centerX, centerY)</code></td>
+						<td>
+							<strong>旋转</strong>: 将用户坐标系统以(centerX, centerY)为旋转中心顺时针旋转 angle 度</td>
+					</tr>
+					<tr>
+						<td><code>rotate(angle)</code></td>
+						<td>
+							<strong>旋转</strong>: 同 <code>rotate(angle, 0, 0)</code>
+						</td>
+					</tr>
+					<tr>
+						<td><code>skewX(angle)</code></td>
+						<td>
+							<strong>倾斜</strong>: 根据 angle 倾斜所有 x 轴坐标, 视觉上会看到 y 轴倾斜...</td>
+					</tr>
+					<tr>
+						<td><code>skewY(angle)</code></td>
+						<td>
+							<strong>倾斜</strong>: 根据 angle 倾斜所有 y 轴坐标, 视觉上会看到 x 轴倾斜...</td>
+					</tr>
+					<tr>
+						<td><code>matrix(a b c d e f)</code></td>
+						<td>
+							<strong>矩阵变换</strong>: 将坐标系统进行矩阵变换, 详细内容请参考后续文章</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+
+</html>

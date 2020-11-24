@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../../../assets/js/jquery-1.9.0.min.js" ></script>
+		<style type="text/css">
+			.demo > div > div{
+				width: 100px;
+				height: 100px;
+				background-color: #faa;
+				border: 1px solid #f00;
+			}
+			.demo > div{
+				border: 1px solid #666;
+			}
+			
+			.example{
+				
+			}
+		</style>
+		<script type="text/javascript">
+			var showCode = function(){
+				var exs = document.querySelectorAll(".example");
+				[].forEach.call(exs, function(ex) {
+					var code = document.createElement("pre");
+					code.innerText = ex.querySelector(".demo").innerHTML;
+					ex.appendChild(code);
+				});
+			};
+		</script>
+		<script>
+			$(function(){
+				showCode();
+				
+				var attrTool = {
+					attrs:{
+						"flex-direction":["row","row-reverse","column","column","column-reverse"],
+						"flex-wrap":["nowrap", "wrap","wrap-reverse"],
+						"flex-flow":["flex-direction","flex-wrap"],
+						"justify-content": ["flex-start" , "flex-end" , "center" , "space-between" , "space-around"]
+					},
+					change:function(attrName,attrValue){
+						$("#attrBoxTest").css(attrName,attrValue);
+						$("#attrBoxCode").val($("#attrBoxTest")[0].outerHTML);
+					},
+					init:function(){
+						var attrs = this.attrs;
+						var change= this.change;
+						var ul=$("<ul></ul>")
+						for(var attr in attrs){
+							var li=$("<li></li>").append(attr+"：");
+							for(var i =0;i<attrs[attr].length;i++){
+								li
+								.append($('<input type="radio" name="'+ attr +'" value="'+ attrs[attr][i] +'" />')
+									.click(function(){
+										var _this = $(this);
+										change(_this.prop("name"),_this.prop("value"));
+									}))
+								.append($("<span>"+ attrs[attr][i] +"</span>").click(function(){
+									$(this).prev().click();
+								}));
+							}
+							li.appendTo(ul);
+						}
+						$("#attrBox").append(ul);
+					}
+				}
+				attrTool.init();
+			})
+		</script>
+	</head>
+	<body>
+		<h1>display:flex 布局</h1>
+		<h5>注意，设为Flex布局以后，子元素的float、clear和vertical-align属性将失效。</h5>
+		
+		<div class="example">
+			<div class="title">示例</div>
+			<pre class="code"></pre>
+			<div class="demo">
+				<div style="display: flex;">
+					<div>1</div>
+					<div>1</div>
+					<div>1</div>
+					<div>1</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="attrBox">
+		</div>
+		<div class="example">
+			<div class="title">示例</div>
+			<div class="demo">
+				<div id="attrBoxTest" style="display: flex;">
+					<div>111</div>
+					<div>222</div>
+					<div>333</div>
+					<div>444</div>
+					<div>555</div>
+					<div>666</div>
+					<div>777</div>
+					<div>888</div>
+				</div>
+			</div>
+		</div>
+		<div>
+			<textarea id="attrBoxCode" style="width: 100%; box-sizing: border-box; height: 100px;"></textarea>
+		</div>
+		
+		<ul>
+			<li>
+				<h3>flex-direction：主轴的方向（即项目的排列方向）。</h3>
+				<h4>flex-direction: row | row-reverse | column | column-reverse; </h4>
+				<div  class="demo">
+					flex-direction: row
+					<div style="display: flex;flex-direction:inherit row">
+						<div>1</div>
+						<div>2</div>
+						<div>3</div>
+						<div>4</div>
+					</div>
+					flex-direction: row-reverse
+					<div style="display: flex;flex-direction: row-reverse">
+						<div>1</div>
+						<div>2</div>
+						<div>3</div>
+						<div>4</div>
+					</div>
+					flex-direction: column
+					<div style="display: flex;flex-direction: column">
+						<div>1</div>
+						<div>2</div>
+						<div>3</div>
+						<div>4</div>
+					</div>
+					flex-direction: column-reverse
+					<div style="display: flex;flex-direction: column-reverse">
+						<div>1</div><div>2</div><div>3</div><div>4</div>
+					</div>
+				</div>
+			</li>
+			<li>
+				<h3>flex-wrap：如果一条轴线排不下，如何换行。</h3>
+				<h4>flex-wrap: nowrap | wrap | wrap-reverse;</h4>
+				<div  class="demo">
+					flex-wrap: nowrap
+					<div style="display: flex;flex-wrap: nowrap">
+						<div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div>
+					</div>
+					flex-wrap: wrap
+					<div style="display: flex;flex-wrap: wrap">
+						<div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div>
+					</div>
+					flex-wrap: wrap-reverse
+					<div style="display: flex;flex-wrap: wrap-reverse">
+						<div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div>
+					</div>
+				</div>
+			</li>
+			<li>
+				<h3>flex-flow：flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。</h3>
+				<h4>flex-flow: flex-direction || flex-wrap;</h4>
+			</li>
+			<li>
+				<h3>justify-content：定义了项目在主轴上的对齐方式。</h3>
+				<h4>justify-content: flex-start | flex-end | center | space-between | space-around;</h4>
+				<div  class="demo">
+					flex-start（默认值）：左对齐
+					<div style="display: flex;justify-content:flex-start">
+						<div>1</div><div>2</div><div>3</div>
+					</div>
+					flex-end：右对齐
+					<div style="display: flex;justify-content:flex-end">
+						<div>1</div><div>2</div><div>3</div>
+					</div>
+					center： 居中
+					<div style="display: flex;justify-content:center">
+						<div>1</div><div>2</div><div>3</div>
+					</div>
+					space-between：两端对齐，项目之间的间隔都相等。
+					<div style="display: flex;justify-content:space-between">
+						<div>1</div><div>2</div><div>3</div>
+					</div>
+					space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。
+					<div style="display: flex;justify-content:space-around">
+						<div>1</div><div>2</div><div>3</div>
+					</div>
+				</div>
+			</li>
+			<li>align-items</li>
+			<li>align-content</li>
+		</ul>
+		
+		
+		
+		
+		
+		<div class="example">
+			<div class="title">横排</div>
+			<pre class="code"></pre>
+			<div class="demo">
+				<div class="flexbox" style="display: -webkit-flex;display: flex;">
+					<div style="width: 100px;height: 100px; border: 1px solid #f00; background-color: #faa;">1</div>
+					<div style="width: 100px;height: 100px; border: 1px solid #f00; background-color: #faa;">1</div>
+					<div style="width: 100px;height: 100px; border: 1px solid #f00; background-color: #faa;">1</div>
+					<div style="width: 100px;height: 100px; border: 1px solid #f00; background-color: #faa;">1</div>
+					<div style="width: 100px;height: 100px; border: 1px solid #f00; background-color: #faa;">1</div>
+					<div style="width: 100px;height: 100px; border: 1px solid #f00; background-color: #faa;">1</div>
+					<div style="width: 100px;height: 100px; border: 1px solid #f00; background-color: #faa;">1</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="example">
+			<div class="title">横排</div>
+			<pre class="code"></pre>
+			<div class="demo">
+				<div class="flexbox" style="display: -webkit-flex;display: flex;">
+					<div style="width: 100px;height: 100px; border: 1px solid #f00; background-color: #faa;">1</div>
+					<div style="width: 100px;height: 100px; border: 1px solid #f00; background-color: #faa;">1</div>
+					<div style="width: 100px;height: 100px; border: 1px solid #f00; background-color: #faa;">1</div>
+					<div style="width: 100px;height: 100px; border: 1px solid #f00; background-color: #faa;">1</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

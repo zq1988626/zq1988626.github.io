@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="index.css" />
+		<script type="text/javascript"></script>
+	</head>
+
+	<body>
+		<div class="topic" xmlns="http://www.w3.org/1999/xhtml">
+			<h1 class="title">正则表达式 </h1>
+			<div id="mainSection">
+				<div id="mainBody">
+					<div>
+						<div class="sectionblock">
+							<a id="sectionToggle0"></a>
+							<p><span class="sentence" id="mt12" xml:space="preserve" data-source="Frequently used regular expressions that appear in the <span class=&quot;label&quot;>Expression Builder</span> are as follows." data-guid="deb195e35684dc3f44d92cbc3e7dc609">
+								<sentencetext xmlns="http://www.w3.org/1999/xhtml"><span class="label" xmlns="http://www.w3.org/1999/xhtml">“表达式生成器”</span>中经常使用的正则表达式如下所示。</sentencetext>
+								</span>
+							</p>
+							<div class="caption"></div>
+							<div class="tableSection">
+								<table>
+									<tbody>
+										<tr>
+											<th>
+												<p><span class="sentence" id="mt13" xml:space="preserve" data-source="Expression" data-guid="63973cd3ad7ccf2c8d5dce94b215f683"><sentencetext xmlns="http://www.w3.org/1999/xhtml">表达式</sentencetext></span></p>
+											</th>
+											<th>
+												<p><span class="sentence" id="mt14" xml:space="preserve" data-source="Syntax" data-guid="55152fd428afc5d73e8878d27d0b09c3"><sentencetext xmlns="http://www.w3.org/1999/xhtml">语法</sentencetext></span></p>
+											</th>
+											<th>
+												<p><span class="sentence" id="mt15" xml:space="preserve" data-source="Description" data-guid="67daf92c833c41c95db874e18fcb2786"><sentencetext xmlns="http://www.w3.org/1999/xhtml">说明</sentencetext></span></p>
+											</th>
+											<th>
+												<p><span class="sentence" id="mt16" xml:space="preserve" data-source="Example" data-guid="1a79a4d60de6718e8e5b326e338ae533"><sentencetext xmlns="http://www.w3.org/1999/xhtml">示例</sentencetext></span></p>
+											</th>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt17" xml:space="preserve" data-source="Any character" data-guid="e1b598fa5d210dac5c140b6fa045a09b"><sentencetext xmlns="http://www.w3.org/1999/xhtml">任一字符</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt18" xml:space="preserve" data-source="." data-guid="5058f1af8388633f609cadb75a75dc9d"><sentencetext xmlns="http://www.w3.org/1999/xhtml">.</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt19" xml:space="preserve" data-source="Matches any single character except a line break." data-guid="e41968d271d851badde02f71d7d2da7b"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配除分行符外的任何一个字符。</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt20" xml:space="preserve" data-source="<span class=&quot;input&quot;>a.o</span> matches &quot;aro&quot; in &quot;around&quot; and &quot;abo&quot; in &quot;about&quot; but not &quot;acro&quot; in &quot;across&quot;." data-guid="f93875693d1a3c557abe7cd77e6e7769">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml"><span class="input" xmlns="http://www.w3.org/1999/xhtml">a.o</span> 匹配“around”中的“aro”和“about”中的“abo”，但不匹配“across”中的“acro”。
+													</sentencetext>
+													</span>
+												</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt21" xml:space="preserve" data-source="Zero or more " data-guid="f436ee5edd90b80d41edd94c6abb17b5"><sentencetext xmlns="http://www.w3.org/1999/xhtml">零个或多个</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt22" xml:space="preserve" data-source="*" data-guid="3389dae361af79b04c9c8e7057f60cc6"><sentencetext xmlns="http://www.w3.org/1999/xhtml">*</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt23" xml:space="preserve" data-source="Matches zero or more occurrences of the preceding expression, and makes all possible matches." data-guid="a86fd65651f6358ba277ebbeee4a4e00"><sentencetext xmlns="http://www.w3.org/1999/xhtml">不匹配上一表达式，或匹配多次，并生成所有可能的匹配。</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt24" xml:space="preserve" data-source="<span class=&quot;input&quot;>a*b</span> matches &quot;b&quot; in &quot;bat&quot; and &quot;ab&quot; in &quot;about&quot;." data-guid="cc4bb3195d0560a9dbfdffaee0d8d213">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml"><span class="input" xmlns="http://www.w3.org/1999/xhtml">a*b</span> 匹配“bat”中的“b”和“about”中的“ab”。
+													</sentencetext>
+													</span>
+												</p>
+												<p><span class="sentence" id="mt25" xml:space="preserve" data-source="<span class=&quot;input&quot;>e.*e</span> matches the word &quot;enterprise&quot;." data-guid="fb6c458e08b9577294f46d2a29a46bb6">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml"><span class="input" xmlns="http://www.w3.org/1999/xhtml">e.*e</span> 匹配单词“enterprise”。
+													</sentencetext>
+													</span>
+												</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt26" xml:space="preserve" data-source="One or more" data-guid="cec552523f535cee35614ae5fc649f7a"><sentencetext xmlns="http://www.w3.org/1999/xhtml">一个或更多个</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt27" xml:space="preserve" data-source="+" data-guid="26b17225b626fb9238849fd60eabdf60"><sentencetext xmlns="http://www.w3.org/1999/xhtml">+</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt28" xml:space="preserve" data-source="Matches at least one occurrence of the preceding expression." data-guid="3443184cc020f1e1b0a750ce8d8f91fc"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配前面表达式的至少一个搜索项。</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt29" xml:space="preserve" data-source="<span class=&quot;input&quot;>ac+</span> matches words that contain the letter &quot;a&quot; and at least one instance of &quot;c&quot;, such as &quot;race&quot;, and &quot;ace&quot;." data-guid="d4d6768b4777566467c984ac810b3033">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml"><span class="input" xmlns="http://www.w3.org/1999/xhtml">ac+</span> 匹配包含字母“a”和至少一个字母“c”的单词，如“race”和“ace”。
+													</sentencetext>
+													</span>
+												</p>
+												<p><span class="sentence" id="mt30" xml:space="preserve" data-source="<span class=&quot;input&quot;>a.+s</span> matches the word &quot;access&quot;." data-guid="0eee08fc982a9c3ab0571aa1fa973798">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml"><span class="input" xmlns="http://www.w3.org/1999/xhtml">a.+s</span> 匹配单词“access”。
+													</sentencetext>
+													</span>
+												</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt31" xml:space="preserve" data-source="Beginning of line" data-guid="9ae4663a37d3d469c8ad99fe827a1112"><sentencetext xmlns="http://www.w3.org/1999/xhtml">行首</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt32" xml:space="preserve" data-source="^" data-guid="7e6a2afe551e067a75fafacf47a6d981"><sentencetext xmlns="http://www.w3.org/1999/xhtml">^</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt33" xml:space="preserve" data-source="Anchors the match string to the beginning of a line." data-guid="8484bdcb44f4650b4b31c5e3a70e1431"><sentencetext xmlns="http://www.w3.org/1999/xhtml">将匹配字符串锚定到行首。</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt34" xml:space="preserve" data-source="<span class=&quot;input&quot;>^car</span> matches the word &quot;car&quot; only when it appears as the first set of characters in a line of the editor." data-guid="1ba1c74ad8544095f7b2feb71446e2bb">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml"><span class="input" xmlns="http://www.w3.org/1999/xhtml">^car</span> 仅当单词“car”显示为编辑器行中的第一组字符时匹配该单词。
+													</sentencetext>
+													</span>
+												</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt35" xml:space="preserve" data-source="End of line" data-guid="96530591f592ed7ea15837b63f96301c"><sentencetext xmlns="http://www.w3.org/1999/xhtml">行尾</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt36" xml:space="preserve" data-source="$" data-guid="c3e97dd6e97fb5125688c97f36720cbe"><sentencetext xmlns="http://www.w3.org/1999/xhtml">$</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt37" xml:space="preserve" data-source="Anchors the match string to the end of a line." data-guid="9beca3b3d9f2bc29361ff5a0be729c37"><sentencetext xmlns="http://www.w3.org/1999/xhtml">将匹配字符串锚定到行尾。</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt38" xml:space="preserve" data-source="<span class=&quot;input&quot;>end$</span> matches the word &quot;end&quot; only when it appears as the last set of characters possible at the end of a line in the editor." data-guid="b8ce8da1390240fadfd2739250b45f02">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml"><span class="input" xmlns="http://www.w3.org/1999/xhtml">end$</span> 仅当单词“end”显示为可能位于编辑器中行尾的最后一组字符时匹配该单词。
+													</sentencetext>
+													</span>
+												</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt39" xml:space="preserve" data-source="Beginning of word" data-guid="67602e58c5200983d60dd99db78eb94d"><sentencetext xmlns="http://www.w3.org/1999/xhtml">词首</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt40" xml:space="preserve" data-source="&amp;lt;" data-guid="87acb03b9542ddbc824f5bbd080a5cd4"><sentencetext xmlns="http://www.w3.org/1999/xhtml">&lt;</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt41" xml:space="preserve" data-source="Matches only when a word starts at this point in the text." data-guid="0c2effb88a11007a2e83b0506a6a0dd2"><sentencetext xmlns="http://www.w3.org/1999/xhtml">仅当单词在文本中以此开头时才匹配。</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt42" xml:space="preserve" data-source="<span class=&quot;input&quot;>&amp;lt;in</span> matches words such as &quot;inside&quot; and &quot;into&quot; that begin with the letters &quot;in&quot;." data-guid="a3bfc625879a00ffa31511861149ac0f">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml"><span class="input" xmlns="http://www.w3.org/1999/xhtml">&lt;in</span> 匹配以字母组合“in”开头的单词，如“inside”和“into”。
+													</sentencetext>
+													</span>
+												</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt43" xml:space="preserve" data-source="End of word" data-guid="9cb04c7dced79a2f685fb089008161e8"><sentencetext xmlns="http://www.w3.org/1999/xhtml">词尾</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt44" xml:space="preserve" data-source="&amp;gt;" data-guid="58ba3bb1a1772a74392e5e86bd2be4b7"><sentencetext xmlns="http://www.w3.org/1999/xhtml">&gt;</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt45" xml:space="preserve" data-source="Matches only when a word ends at this point in the text." data-guid="c5393890332f74e09a93a4ac24b8b18c"><sentencetext xmlns="http://www.w3.org/1999/xhtml">仅当词在文本中的此位置结束时才匹配。</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt46" xml:space="preserve" data-source="<span class=&quot;input&quot;>ss&amp;gt;</span> matches words such as &quot;across&quot; and &quot;loss&quot; that end with the letters &quot;ss&quot;." data-guid="9da340b8c5765e7b408d0c81d3ea432f">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml"><span class="input" xmlns="http://www.w3.org/1999/xhtml">ss&gt;</span> 匹配以字母组合“ss”结尾的单词，如“across”和“loss”。
+													</sentencetext>
+													</span>
+												</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt47" xml:space="preserve" data-source="Line break" data-guid="6b2564cd3687fe6f55d3cd23c6319faa"><sentencetext xmlns="http://www.w3.org/1999/xhtml">换行符</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt48" xml:space="preserve" data-source="\n" data-guid="1d78758685e5e2f4efeeb490f8521abd"><sentencetext xmlns="http://www.w3.org/1999/xhtml">\n</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt49" xml:space="preserve" data-source="Matches an operating system-independent line break." data-guid="adb10ec1c7dae401718df8614751ed4e"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配与操作系统无关的换行符。</sentencetext></span>
+													<span class="sentence" id="mt50" xml:space="preserve" data-source="In a Replace expression, inserts a line break." data-guid="b63ba5b1f8e41f06cf4226f5840485fe"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在“替换”表达式中，插入换行符。</sentencetext></span>
+												</p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt51" xml:space="preserve" data-source="<span class=&quot;input&quot;>End\nBegin</span> matches the word &quot;End&quot; and &quot;Begin&quot; only when &quot;End&quot; is the last string in a line and &quot;Begin&quot; is the first string in the next line." data-guid="94e52fa53791d2534a48671709e60518">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml"><span class="input" xmlns="http://www.w3.org/1999/xhtml">End\nBegin</span> 仅当“End”是一行中的最后一个字符串和“Begin”是下一行中的第一个字符串时匹配单词“End”和“Begin”。
+													</sentencetext>
+													</span>
+												</p>
+												<p><span class="sentence" id="mt52" xml:space="preserve" data-source="In a Replace expression," data-guid="45f055e9cdb4c6305ade796f7d18b5e2"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在“替换”表达式中，</sentencetext></span></p>
+												<p><span class="sentence" id="mt53" xml:space="preserve" data-source="<span class=&quot;input&quot;>Begin\nEnd</span> replaces the word &quot;End&quot; with &quot;Begin&quot; on the first line, inserts a line break, and then replaces the word &quot;Begin&quot; with the word &quot;End&quot;." data-guid="0dd8e176f79defee3bf3d1eebeaa5df3">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml"><span class="input" xmlns="http://www.w3.org/1999/xhtml">Begin\nEnd</span> 使用“Begin”替换第一行中的单词“End”，插入换行符，然后使用单词“End”替换单词“Begin”。
+													</sentencetext>
+													</span>
+												</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt54" xml:space="preserve" data-source="Any one character in the set" data-guid="6da9a47c6ce687cbd982531571e45bf7"><sentencetext xmlns="http://www.w3.org/1999/xhtml">集中的任何一个字符</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt55" xml:space="preserve" data-source="[]" data-guid="d751713988987e9331980363e24189ce"><sentencetext xmlns="http://www.w3.org/1999/xhtml">[]</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt56" xml:space="preserve" data-source="Matches any one of the characters in the []." data-guid="c95978f804081477f40bcd82beb28005"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配 [] 内的任何一个字符。</sentencetext></span>
+													<span class="sentence" id="mt57" xml:space="preserve" data-source="To specify a range of characters, list the starting and ending characters separated by a dash (-), as in [a-z]." data-guid="3296c7d1d84214bdcfcc446f03d47e0c"><sentencetext xmlns="http://www.w3.org/1999/xhtml">若要指定字符的范围，请列出由短划线 (-) 分隔的起始字符和结束字符，如 
+      [a-z]。</sentencetext></span> </p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt58" xml:space="preserve" data-source="<span class=&quot;input&quot;>be[n-t]</span> matches &quot;bet&quot; in &quot;between&quot;, &quot;ben&quot; in &quot;beneath&quot;, and &quot;bes&quot; in &quot;beside&quot; but not &quot;bel&quot; in &quot;below&quot;." data-guid="b33e93703028a0c55ab38d0783cf59c1">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml"><span class="input" xmlns="http://www.w3.org/1999/xhtml">be[n-t]</span> 匹配“between”中的“bet”、“beneath”中的“ben”和“beside”中的“bes”，但不匹配“below”中的“bel”。
+													</sentencetext>
+													</span>
+												</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt59" xml:space="preserve" data-source="Any one character not in the set" data-guid="114bde9f86871883ffe45c7e31532b2a"><sentencetext xmlns="http://www.w3.org/1999/xhtml">集中没有的任何一个字符</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt60" xml:space="preserve" data-source="[^...]" data-guid="8b346e0e62b85b7f4a7ccc798bd17ec7"><sentencetext xmlns="http://www.w3.org/1999/xhtml">[^...]</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt61" xml:space="preserve" data-source="Matches any character that is not in the set of characters that follows the ^." data-guid="93daae0699a25d0c7e5d8758c3fa49ad"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配未在跟随 ^ 
+      的字符集中指定的任何字符。</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt62" xml:space="preserve" data-source="<span class=&quot;input&quot;>be[^n-t]</span> matches &quot;bef&quot; in &quot;before&quot;, &quot;beh&quot; in &quot;behind&quot;, and &quot;bel&quot; in &quot;below&quot;, but not &quot;ben&quot; in &quot;beneath&quot;." data-guid="c4d4bdd679eddb02482ce806cdbe144b">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml"><span class="input" xmlns="http://www.w3.org/1999/xhtml">be[^n-t]</span> 匹配“before”中的“bef”、“behind”中的“beh”和“below”中的“bel”，但是不匹配“beneath”中的“ben”。
+													</sentencetext>
+													</span>
+												</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt63" xml:space="preserve" data-source="Or" data-guid="e81c4e4f2b7b93b481e13a8553c2ae1b"><sentencetext xmlns="http://www.w3.org/1999/xhtml">Or</sentencetext></span></p>
+											</td>
+											<td>
+												<p>|</p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt64" xml:space="preserve" data-source="Matches either the expression before or the one after the OR symbol (|)." data-guid="cf823043fa078b6eafe5b46cd3480bf6"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配 OR 符号 (|) 
+      之前或之后的表达式。</sentencetext></span> <span class="sentence" id="mt65" xml:space="preserve" data-source="Mostly used in a group." data-guid="f89a8e09b98b199792335044f6c85afc"><sentencetext xmlns="http://www.w3.org/1999/xhtml">最常用在分组中。</sentencetext></span>
+												</p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt66" xml:space="preserve" data-source="<span class=&quot;input&quot;>(sponge|mud) bath</span> matches &quot;sponge bath&quot; and &quot;mud bath.&quot;" data-guid="82ee8c0b4ccbc2123609e3bddb21e023">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml"><span class="input" xmlns="http://www.w3.org/1999/xhtml">(sponge|mud) bath</span> 匹配“sponge bath”和“mud bath”。</sentencetext>
+													</span>
+												</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt67" xml:space="preserve" data-source="Escape" data-guid="e0ebc3c409070d07f1df0f2f4132509e"><sentencetext xmlns="http://www.w3.org/1999/xhtml">转义符</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt68" xml:space="preserve" data-source="\" data-guid="28d397e87306b8631f3ed80d858d35f0"><sentencetext xmlns="http://www.w3.org/1999/xhtml">\</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt69" xml:space="preserve" data-source="Matches the character that follows the backslash (\) as a literal." data-guid="9aa605eac6c55eebb9eecabef092b263"><sentencetext xmlns="http://www.w3.org/1999/xhtml">按原义匹配反斜杠 (\) 
+      之后的字符。</sentencetext></span> <span class="sentence" id="mt70" xml:space="preserve" data-source="This lets you find the characters that are used in regular expression notation, such as { and ^." data-guid="8c158183fbb9aa3fff2d90b61706754d"><sentencetext xmlns="http://www.w3.org/1999/xhtml">这使您可以查找正则表达式表示法中使用的字符，如 { 和 
+      ^。</sentencetext></span> </p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt71" xml:space="preserve" data-source="<span class=&quot;input&quot;>\^</span> searches for the ^ character." data-guid="95a035a9da382325df85a5b69cd64e65">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml"><span class="input" xmlns="http://www.w3.org/1999/xhtml">\^</span> 搜索 ^ 字符。
+													</sentencetext>
+													</span>
+												</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt72" xml:space="preserve" data-source="Tagged expression (or backreference)" data-guid="261a8106fc25d5e869c66b0fdae98705"><sentencetext xmlns="http://www.w3.org/1999/xhtml">带标记的表达式（或反向引用）</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt73" xml:space="preserve" data-source="{}" data-guid="99914b932bd37a50b983c5e7c90ae93b"><sentencetext xmlns="http://www.w3.org/1999/xhtml">{}</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt74" xml:space="preserve" data-source="Uses the text that is inside the braces to identify locations where text is to be replaced." data-guid="e531963050fabe8344a6c6d6dfb83b56"><sentencetext xmlns="http://www.w3.org/1999/xhtml">使用括号内的文本来标识要替换的文本的位置。</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt75" xml:space="preserve" data-source="<span class=&quot;input&quot;>{does}n't</span> identifies the text that precedes the replacement in the replace string <span class=&quot;input&quot;>\1 not</span> to change every occurrence of doesn't to does not." data-guid="bf03396f1e2f89e273144399dbacf032">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml"><span class="input" xmlns="http://www.w3.org/1999/xhtml">{does}n't</span> 标识在替换字符串中的更换之前的文本，
+														<span class="input" xmlns="http://www.w3.org/1999/xhtml">\1 not</span> 更改出现的每个项。
+													</sentencetext>
+													</span>
+												</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt76" xml:space="preserve" data-source="C/C++ Identifier" data-guid="4aebeec598bd145f82247daec44cc7a4"><sentencetext xmlns="http://www.w3.org/1999/xhtml">C/C++ 
+标识符</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt77" xml:space="preserve" data-source=":i" data-guid="58bd71675a653e426fba72afb342f7e0"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:i</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt78" xml:space="preserve" data-source="Shorthand for the expression ([a-zA-Z_$][a-zA-Z0-9_$]*)." data-guid="9eaaf843fadda08ee818cd4df95e2b17"><sentencetext xmlns="http://www.w3.org/1999/xhtml">表达式 ([a-zA-Z_$][a-zA-Z0-9_$]*) 
+      的简写形式。</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt79" xml:space="preserve" data-source="Matches any possible C/C++ identifier." data-guid="bf01575d26bd99eb06880e321aefac1e"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配任何可能的 C/C++ 
+      标识符。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt80" xml:space="preserve" data-source="Quoted string" data-guid="1e9df952761ca510675626941ccde2dc"><sentencetext xmlns="http://www.w3.org/1999/xhtml">带引号的字符串</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt81" xml:space="preserve" data-source=":q" data-guid="cc01d2d509da51871260d31ee4a3fdc1"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:q</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt82" xml:space="preserve" data-source="Shorthand for the expression ((&quot;[^&quot;]*&quot;)|('[^']*')), which matches all characters that are enclosed in double or single quotation marks, and also the quotation marks themselves." data-guid="4c8989c7e4ef95247fc2d7932ff95c9e"><sentencetext xmlns="http://www.w3.org/1999/xhtml">表达式 (("[^"]*")|('[^']*')) 
+      的简写形式，它匹配用双引号或单引号括起来的所有字符，还匹配引号本身。</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt83" xml:space="preserve" data-source="<span class=&quot;input&quot;>:q</span> matches &quot;test quote&quot; and 'test quote' but not the 't of can't." data-guid="ca1576bd967de56a1961cab8d82626b4">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml"><span class="input" xmlns="http://www.w3.org/1999/xhtml">:q</span> 匹配“测试引用”和‘测试引用’，但不匹配“can't”中的“'t”。
+													</sentencetext>
+													</span>
+												</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt84" xml:space="preserve" data-source="Space or Tab" data-guid="6b3d4ed474db757dd4966a0c72daf093"><sentencetext xmlns="http://www.w3.org/1999/xhtml">空格或制表符</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt85" xml:space="preserve" data-source=":b" data-guid="e41d8ab642523b892920cad695e716b4"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:b</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt86" xml:space="preserve" data-source="Matches either space or tab characters." data-guid="ea5c2cc5369f84c65a6922c836e19e22"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配空格或制表符。</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt87" xml:space="preserve" data-source="<span class=&quot;input&quot;>Public:bInterface</span> matches the phrase &quot;Public Interface&quot; in text. " data-guid="8233228f07de9da869bb6eabfc6b3e85">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml"><span class="input" xmlns="http://www.w3.org/1999/xhtml">Public:bInterface</span> 匹配文本中的短语“Public Interface”。</sentencetext>
+													</span>
+												</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt88" xml:space="preserve" data-source="Integer" data-guid="157db7df530023575515d366c9b672e8"><sentencetext xmlns="http://www.w3.org/1999/xhtml">Integer</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt89" xml:space="preserve" data-source=":z" data-guid="d62d649d5569931835e2505822924e82"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:z</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt90" xml:space="preserve" data-source="Shorthand for the expression ([0-9]+), which matches any combination of numeric characters." data-guid="cf1ae4b12ae9d46b9961b61bb42f4688"><sentencetext xmlns="http://www.w3.org/1999/xhtml">表达式 ([0-9]+) 
+      的简写形式，它匹配数字字符的任何组合。</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt91" xml:space="preserve" data-source="Matches any integer, such as &quot;1&quot;, &quot;234&quot;, &quot;56&quot;, and so on." data-guid="5e6de0dfc5f5628e4a7750fbfe3786cf"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配任何整数，如“1”、“234”、“56”等等。</sentencetext></span></p>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<p><span class="sentence" id="mt92" xml:space="preserve" data-source="The list of all regular expressions that are valid in Find and Replace operations is longer than can be displayed in the <span class=&quot;label&quot;>Expression Builder.</span> Although the following regular expressions do not appear in the <span class=&quot;label&quot;>Expression Builder</span>, you can use them in the <span class=&quot;label&quot;>Find what</span> or <span class=&quot;label&quot;>Replace with</span> fields. " data-guid="0cbc2f360d87b62e63739f2c9006c1ba">
+								<sentencetext xmlns="http://www.w3.org/1999/xhtml">“查找”和“替换”操作中所有有效正则表达式的列表，比<span class="label" xmlns="http://www.w3.org/1999/xhtml">“表达式生成器”</span>中可显示的列表长。尽管<span class="label" xmlns="http://www.w3.org/1999/xhtml">“表达式生成器”</span>中没有显示下面的正则表达式，但您可以在<span class="label" xmlns="http://www.w3.org/1999/xhtml">“查找内容”</span>或<span class="label" xmlns="http://www.w3.org/1999/xhtml">“替换为”</span>字段中使用它们。</sentencetext>
+								</span>
+							</p>
+							<div class="caption"></div>
+							<div class="tableSection">
+								<table>
+									<tbody>
+										<tr>
+											<th>
+												<p><span class="sentence" id="mt93" xml:space="preserve" data-source="Expression" data-guid="63973cd3ad7ccf2c8d5dce94b215f683"><sentencetext xmlns="http://www.w3.org/1999/xhtml">表达式</sentencetext></span></p>
+											</th>
+											<th>
+												<p><span class="sentence" id="mt94" xml:space="preserve" data-source="Syntax" data-guid="55152fd428afc5d73e8878d27d0b09c3"><sentencetext xmlns="http://www.w3.org/1999/xhtml">语法</sentencetext></span></p>
+											</th>
+											<th>
+												<p><span class="sentence" id="mt95" xml:space="preserve" data-source="Description" data-guid="67daf92c833c41c95db874e18fcb2786"><sentencetext xmlns="http://www.w3.org/1999/xhtml">说明</sentencetext></span></p>
+											</th>
+											<th>
+												<p><span class="sentence" id="mt96" xml:space="preserve" data-source="Example" data-guid="1a79a4d60de6718e8e5b326e338ae533"><sentencetext xmlns="http://www.w3.org/1999/xhtml">示例</sentencetext></span></p>
+											</th>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt97" xml:space="preserve" data-source="Minimal, zero or more" data-guid="cecf3f06525002d124921c4e5c3b0b7b"><sentencetext xmlns="http://www.w3.org/1999/xhtml">最少、零个或更多个</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt98" xml:space="preserve" data-source="@" data-guid="518ed29525738cebdac49c49e60ea9d3"><sentencetext xmlns="http://www.w3.org/1999/xhtml">@</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt99" xml:space="preserve" data-source="Matches zero or more occurrences of the preceding expression, and matches as few characters as possible." data-guid="28f58c85ad231f942379bd18b595604f"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配前面表达式的 0 
+      个或更多搜索项，并匹配尽可能少的字符。</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt100" xml:space="preserve" data-source="<span class=&quot;input&quot;>e.@</span> matches &quot;ente&quot; and &quot;erprise&quot; in &quot;enterprise&quot;, but not the full word &quot;enterprise&quot;." data-guid="bcb5189f2b6d04fd59e83c2a16e38de1">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml"><span class="input" xmlns="http://www.w3.org/1999/xhtml">e.@</span> 匹配“enterprise”中的“ente”和“erprise”，但不匹配完整的单词“enterprise”。
+													</sentencetext>
+													</span>
+												</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt101" xml:space="preserve" data-source="Minimal, one or more" data-guid="c50413f98b7d076aa87e51789efd3746"><sentencetext xmlns="http://www.w3.org/1999/xhtml">最少、一个或更多个</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt102" xml:space="preserve" data-source="#" data-guid="01abfc750a0c942167651c40d088531d"><sentencetext xmlns="http://www.w3.org/1999/xhtml">#</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt103" xml:space="preserve" data-source="Matches one or more occurrences of the preceding expression, and matches as few characters as possible." data-guid="55fdb15b9808a50a5c00f6d395dec401"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配前面表达式的一个或更多搜索项，并匹配尽可能少的字符。</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt104" xml:space="preserve" data-source="<span class=&quot;input&quot;>ac#</span> matches words that contain the letter &quot;a&quot; and at least one instance of &quot;c&quot;, such as &quot;ace&quot;." data-guid="5ab840da131a2df81433be477141492b">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml"><span class="input" xmlns="http://www.w3.org/1999/xhtml">ac#</span> 匹配包含字母“a”和至少一个字母“c”的单词，如“ace”。
+													</sentencetext>
+													</span>
+												</p>
+												<p><span class="sentence" id="mt105" xml:space="preserve" data-source="<span class=&quot;input&quot;>a.#s</span> matches &quot;acces&quot; in the word &quot;access&quot;." data-guid="ae0d9731da4feca4eaefb7aff26530c4">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml"><span class="input" xmlns="http://www.w3.org/1999/xhtml">a.#s</span> 匹配单词“access”中的“acces”。
+													</sentencetext>
+													</span>
+												</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt106" xml:space="preserve" data-source="Repeat <span class=&quot;parameter&quot;>n</span> times" data-guid="d4330136675b564a7dadceb708facdd7">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml">重复 <span class="parameter" xmlns="http://www.w3.org/1999/xhtml">n</span> 次
+													</sentencetext>
+													</span>
+												</p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt107" xml:space="preserve" data-source="^<span class=&quot;parameter&quot;>n</span>" data-guid="1d95556f59075dd25390d5765def5cce">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml">^<span class="parameter" xmlns="http://www.w3.org/1999/xhtml">n</span></sentencetext>
+													</span>
+												</p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt108" xml:space="preserve" data-source="Matches <span class=&quot;parameter&quot;>n</span> occurrences of the preceding expression. " data-guid="10e40298ff71e2ccafb3f478386ef65c">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配前面表达式的 <span class="parameter" xmlns="http://www.w3.org/1999/xhtml">n</span> 次出现。
+													</sentencetext>
+													</span>
+												</p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt109" xml:space="preserve" data-source="<span class=&quot;input&quot;>[0-9]^4</span> matches any 4-digit sequence." data-guid="aead90ebb8cdb357a9489a998747b7ab">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml"><span class="input" xmlns="http://www.w3.org/1999/xhtml">[0-9]^4</span> 匹配任意 4 位数字的序列。
+													</sentencetext>
+													</span>
+												</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt110" xml:space="preserve" data-source="Grouping" data-guid="a0d9c281caf1eec6fab8c47a19a0bd56"><sentencetext xmlns="http://www.w3.org/1999/xhtml">分组</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt111" xml:space="preserve" data-source="()" data-guid="bcd8b0c2eb1fce714eab6cef0d771acc"><sentencetext xmlns="http://www.w3.org/1999/xhtml">()</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt112" xml:space="preserve" data-source="Lets you group a set of expressions together." data-guid="7bcfc6f9892bd44d51b8e138447803c2"><sentencetext xmlns="http://www.w3.org/1999/xhtml">允许将一组表达式组合在一起。</sentencetext></span>
+													<span class="sentence" id="mt113" xml:space="preserve" data-source="If you want to search for two different expressions in a single search, you can use the Grouping expression to combine them." data-guid="8e634a5385f7ace4d9b2bd570f258387"><sentencetext xmlns="http://www.w3.org/1999/xhtml">如果要在一次操作中搜索两个不同的表达式，可以使用分组表达式来组合这两个表达式。</sentencetext></span>
+												</p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt114" xml:space="preserve" data-source="If you want to search for <span class=&quot;input&quot;>- [a-z][1-3]</span> or <span class=&quot;input&quot;>- [0-9][a-z]</span>, you would combine them: <span class=&quot;input&quot;>(- [a-z][1-3])|(- [0-9][a-z])</span>." data-guid="b6619b29d9ac719b13dfdd8f993d23e4">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml">如果要搜索 <span class="input" xmlns="http://www.w3.org/1999/xhtml">(- [a-z][1-3]</span> 或 <span class="input" xmlns="http://www.w3.org/1999/xhtml">- 
+      [0-9][a-z]</span>，应按如下方式组合这两个表达式：<span class="input" xmlns="http://www.w3.org/1999/xhtml">([a-z][1-3])|(- 
+      [0-9][a-z])</span>。</sentencetext>
+													</span>
+												</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt115" xml:space="preserve" data-source="<span class=&quot;parameter&quot;>n</span>th tagged text" data-guid="ac3f5285c5403a0b2bff3f2633ecf800">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml">第 <span class="parameter" xmlns="http://www.w3.org/1999/xhtml">n</span> 个带标记的文本
+													</sentencetext>
+													</span>
+												</p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt116" xml:space="preserve" data-source="\<span class=&quot;parameter&quot;>n</span>" data-guid="ca36e2448abb0a2b7da1606ae594d5e0">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml">\<span class="parameter" xmlns="http://www.w3.org/1999/xhtml">n</span></sentencetext>
+													</span>
+												</p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt117" xml:space="preserve" data-source="In a Find or Replace expression, indicates the text that is matched by the <span class=&quot;parameter&quot;>n</span>th tagged expression, where <span class=&quot;parameter&quot;>n</span> is a number from 1 to 9." data-guid="38b3375ed4075c58633e4f28860029b7">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml">在“查找”或“替换”表达式中，指示第 <span class="parameter" xmlns="http://www.w3.org/1999/xhtml">n</span> 个带标记的表达式所匹配的文本，其中 <span class="parameter" xmlns="http://www.w3.org/1999/xhtml">n</span> 是从 1 至 9 的数字。
+													</sentencetext>
+													</span>
+												</p>
+												<p><span class="sentence" id="mt118" xml:space="preserve" data-source="In a Replace expression, \0 inserts the complete matched text." data-guid="ef190018f5bba95357f940538974aae2"><sentencetext xmlns="http://www.w3.org/1999/xhtml">在“替换”表达式中，\0 
+      插入整个匹配的文本。</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt119" xml:space="preserve" data-source="If you search for <span class=&quot;input&quot;>a{[0-9]}</span> and replace with <span class=&quot;input&quot;>\1</span>, all occurrences of &quot;a&quot; followed by a digit are replaced by the digit it follows." data-guid="27a20121eace3498fe03a1b2909c8cff">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml">如果搜索 <span class="input" xmlns="http://www.w3.org/1999/xhtml">a{[0-9]}</span>，并替换为 <span class="input" xmlns="http://www.w3.org/1999/xhtml">\1</span>，则“a”后跟数字的所有搜索项由跟随的数字替换。</sentencetext>
+													</span>
+													<span class="sentence" id="mt120" xml:space="preserve" data-source="For example, &quot;a1&quot; is replaced by &quot;1&quot; and similarly &quot;a2&quot; is replaced by &quot;2&quot;." data-guid="6eb82c1807d78ca2de9b4c7ab2f4cdc2"><sentencetext xmlns="http://www.w3.org/1999/xhtml">例如，“a1”由“1”替换，类似地，“a2”由“2”替换。</sentencetext></span>
+												</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt121" xml:space="preserve" data-source="Right-justified field" data-guid="5d610e5723428813e15c31fd50470778"><sentencetext xmlns="http://www.w3.org/1999/xhtml">右对齐字段</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt122" xml:space="preserve" data-source="\(<span class=&quot;parameter&quot;>w</span>,<span class=&quot;parameter&quot;>n</span>)" data-guid="dff2fbf81222177b298435c902eccdcc">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml">\(<span class="parameter" xmlns="http://www.w3.org/1999/xhtml">w</span>,<span class="parameter" xmlns="http://www.w3.org/1999/xhtml">n</span>)</sentencetext>
+													</span>
+												</p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt123" xml:space="preserve" data-source="In a Replace expression, right-justifies the <span class=&quot;parameter&quot;>n</span>th tagged expression in a field at least <span class=&quot;parameter&quot;>w</span> characters wide." data-guid="c007b163713b56992d82e203b03dab21">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml">在“替换”表达式中，将字段中第 <span class="parameter" xmlns="http://www.w3.org/1999/xhtml">n</span> 个带标记的表达式右对齐至少 <span class="parameter" xmlns="http://www.w3.org/1999/xhtml">w</span> 字符宽。
+													</sentencetext>
+													</span>
+												</p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt124" xml:space="preserve" data-source="If you search for <span class=&quot;input&quot;>a{[0-9]}</span> and replace with <span class=&quot;input&quot;>\(10,1)</span>, the occurrences of &quot;a<span class=&quot;parameter&quot;>n</span>&quot; are replaced by the integer and right-justified by 10 spaces." data-guid="11cabdce7c66ea7d719ce95be1d216fb">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml">如果搜索 <span class="input" xmlns="http://www.w3.org/1999/xhtml">a{[0-9]}</span>，并替换为 <span class="input" xmlns="http://www.w3.org/1999/xhtml">\(10,1)</span>，则“a<span class="parameter" xmlns="http://www.w3.org/1999/xhtml">n</span>”的搜索项由整数替换，并通过 10 个空格右对齐。
+													</sentencetext>
+													</span>
+												</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt125" xml:space="preserve" data-source="Left-justified field" data-guid="f679c03f5fefa510354581224a0f1bab"><sentencetext xmlns="http://www.w3.org/1999/xhtml">左对齐字段</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt126" xml:space="preserve" data-source="\(-<span class=&quot;parameter&quot;>w</span>,<span class=&quot;parameter&quot;>n</span>)" data-guid="a2dca7fd50d143975ca2f43038d0eea1">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml">\(-<span class="parameter" xmlns="http://www.w3.org/1999/xhtml">w</span>,<span class="parameter" xmlns="http://www.w3.org/1999/xhtml">n</span>)</sentencetext>
+													</span>
+												</p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt127" xml:space="preserve" data-source="In a Replace expression, left-justifies the <span class=&quot;parameter&quot;>n</span>th tagged expression in a field at least <span class=&quot;parameter&quot;>w</span> characters wide." data-guid="eaafc713c4139724d0777681104f92dc">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml">在“替换”表达式中，将字段中第 <span class="parameter" xmlns="http://www.w3.org/1999/xhtml">n</span> 个带标记的表达式左对齐至少 <span class="parameter" xmlns="http://www.w3.org/1999/xhtml">w</span> 字符宽。
+													</sentencetext>
+													</span>
+												</p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt128" xml:space="preserve" data-source="If you search for <span class=&quot;input&quot;>a{[0-9]}</span> and replace with <span class=&quot;input&quot;>\(-10,1)</span>, the occurrences of &quot;a<span class=&quot;parameter&quot;>n</span>&quot; are replaced by the integer and left-justified by 10 spaces." data-guid="b7d4d67784aacf61a71f17b56200b059">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml">如果搜索 <span class="input" xmlns="http://www.w3.org/1999/xhtml">a{[0-9]}</span>，并替换为 <span class="input" xmlns="http://www.w3.org/1999/xhtml">\(-10,1)</span>，则“a<span class="parameter" xmlns="http://www.w3.org/1999/xhtml">n</span>”由整数替换，并通过 10 个空格左对齐。
+													</sentencetext>
+													</span>
+												</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt129" xml:space="preserve" data-source="Prevent match" data-guid="cba649af0ef42ae8acbd30c8805caab9"><sentencetext xmlns="http://www.w3.org/1999/xhtml">禁止匹配</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt130" xml:space="preserve" data-source="~(X)" data-guid="7630502fdca4f41cc3d5fcb16463b9a4"><sentencetext xmlns="http://www.w3.org/1999/xhtml">~(X)</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt131" xml:space="preserve" data-source="Prevents a match when X appears at this point in the expression. " data-guid="d0750eb86162fb1f5db2b297e459ef6f"><sentencetext xmlns="http://www.w3.org/1999/xhtml">当 X 
+      出现在表达式中的此位置时禁止匹配。</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt132" xml:space="preserve" data-source="<span class=&quot;input&quot;>real~(ity)</span> matches the &quot;real&quot; in &quot;realty&quot; and &quot;really,&quot; but not the &quot;real&quot; in &quot;reality.&quot;" data-guid="8fdcdda40a96114c65669e047c330cb5">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml"><span class="input" xmlns="http://www.w3.org/1999/xhtml">real~(ity)</span> 匹配“realty”和“really”中的“real”，但不匹配“reality”中的“real”。
+													</sentencetext>
+													</span>
+												</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt133" xml:space="preserve" data-source="Alphanumeric character" data-guid="436c4f90a07ad14a4fe1f8b7f851cb5b"><sentencetext xmlns="http://www.w3.org/1999/xhtml">字母数字字符</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt134" xml:space="preserve" data-source=":a" data-guid="66c06124682b005f256fe90e3325cf79"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:a</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt135" xml:space="preserve" data-source="Matches the expression ([a-zA-Z0-9])." data-guid="0a66314e354ad2ca18af1f8d97a351c6"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配表达式 
+      ([a-zA-Z0-9])。</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt136" xml:space="preserve" data-source="Matches any alphanumeric character, such as &quot;a&quot;, &quot;A&quot;, &quot;w&quot;, &quot;W&quot;, &quot;5&quot;, and so on." data-guid="4cd5e758e5aec1cf36aa6a50715f110e"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配任何字母数字字符，如“a”、“A”、“w”、“W”、“5”等等。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt137" xml:space="preserve" data-source="Alphabetic character" data-guid="452f4cffeaaac10e85cac8b29bae4f8f"><sentencetext xmlns="http://www.w3.org/1999/xhtml">字母字符</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt138" xml:space="preserve" data-source=":c" data-guid="e9f31c2f998c58a40135a6452ab1ae7e"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:c</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt139" xml:space="preserve" data-source="Matches the expression ([a-zA-Z])." data-guid="c32e0b224e3df99b87f4ff6d88bfbf56"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配表达式 
+      ([a-zA-Z])。</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt140" xml:space="preserve" data-source="Matches any alphabetical character, such as &quot;a&quot;, &quot;A&quot;, &quot;w&quot;, &quot;W&quot;, and so on." data-guid="48d97b0a41cb4f1031f6fd950357c356"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配任何字母字符，如“a”、“A”、“w”、“W”等等。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt141" xml:space="preserve" data-source="Decimal digit" data-guid="7216743844e90f938bcb4c94d7b08549"><sentencetext xmlns="http://www.w3.org/1999/xhtml">十进制数字</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt142" xml:space="preserve" data-source=":d" data-guid="215ac500d570464da37278a78d5a3489"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:d</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt143" xml:space="preserve" data-source="Matches the expression  ([0-9])." data-guid="b6c0c6406b9cb064a12152c87ac9d1f7"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配表达式 
+      ([0-9])。</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt144" xml:space="preserve" data-source="Matches any digit, such as &quot;4&quot; and &quot;6&quot;." data-guid="86a5c8cc172ddd55cb36099f3c35e42d"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配任何数字，如“4”和“6”。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt145" xml:space="preserve" data-source="Hexadecimal digit" data-guid="ed29ed6d6da0cc462a856a4e61ca391c"><sentencetext xmlns="http://www.w3.org/1999/xhtml">十六进制数</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt146" xml:space="preserve" data-source=":h" data-guid="d9577fbf5c24f80179cea2d049176b3b"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:h</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt147" xml:space="preserve" data-source="Matches the expression  ([0-9a-fA-F]+)." data-guid="c81e4d16b20f5750b6d7a77e99f4a005"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配表达式 
+      ([0-9a-fA-F]+)。</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt148" xml:space="preserve" data-source="Matches any hexadecimal number, such as &quot;1A&quot;, &quot;ef&quot;, and &quot;007&quot;." data-guid="b43f0aea9c0d4b35a9bdd11f86407b63"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配任何十六进制数，如“1A”、“ef”和“007”。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt149" xml:space="preserve" data-source="Rational number" data-guid="0c08e4178fcc1083c335318110c859c8"><sentencetext xmlns="http://www.w3.org/1999/xhtml">有理数</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt150" xml:space="preserve" data-source=":n" data-guid="115f3e2e3b120d2c76910ef57515179f"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:n</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt151" xml:space="preserve" data-source="Matches the expression  (([0-9]+.[0-9]*)|([0-9]*.[0-9]+)|([0-9]+))." data-guid="854a325fe5b6f4976f95b572956e12ea"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配表达式 
+      (([0-9]+.[0-9]*)|([0-9]*.[0-9]+)|([0-9]+))。</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt152" xml:space="preserve" data-source="Matches any rational number, such as &quot;2007&quot;, &quot;1.0&quot;, and &quot;.9&quot;." data-guid="b387fea50ab7631c541f15ef8b61ee6d"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配任何有理数，如“2007”、“1.0”和“.9”。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt153" xml:space="preserve" data-source="Alphabetic string" data-guid="a092de9e6067ebfae39add397a563db4"><sentencetext xmlns="http://www.w3.org/1999/xhtml">字母字符串</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt154" xml:space="preserve" data-source=":w" data-guid="fb0896854f7adb4aa11fab452edea812"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:w</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt155" xml:space="preserve" data-source="Matches the expression  ([a-zA-Z]+)." data-guid="607c558cc6f2518cbb98768b77c3add4"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配表达式 
+      ([a-zA-Z]+)。</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt156" xml:space="preserve" data-source="Matches any string that contains only alphabetical characters." data-guid="03944082dd2fa37a69ca3a0f7c8a1993"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配任何仅包含字母字符的字符串。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt157" xml:space="preserve" data-source="Escape" data-guid="e0ebc3c409070d07f1df0f2f4132509e"><sentencetext xmlns="http://www.w3.org/1999/xhtml">转义符</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt158" xml:space="preserve" data-source="\e" data-guid="b0d055b0eb71654b74e1ac2b4a8a646d"><sentencetext xmlns="http://www.w3.org/1999/xhtml">\e</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt159" xml:space="preserve" data-source="Unicode U+001B." data-guid="bacfcbd83e4c9f8b34ce9816e487832a"><sentencetext xmlns="http://www.w3.org/1999/xhtml">Unicode 
+      U+001B。</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt160" xml:space="preserve" data-source="Matches the &quot;Escape&quot; control character." data-guid="8575204f9b6a1b58f8785f6ca41a4bf9"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配“转义”控制字符。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt161" xml:space="preserve" data-source="Bell" data-guid="8d45c85b51b27a04ad7fdfc3f126f9f8"><sentencetext xmlns="http://www.w3.org/1999/xhtml">Bell</sentencetext></span></p>
+											</td>
+											<td>
+												<p></p>
+												<p><span class="sentence" id="mt162" xml:space="preserve" data-source="\g" data-guid="9651cf53e90f0755fb8b5f0e97be3a8d"><sentencetext xmlns="http://www.w3.org/1999/xhtml">\g</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt163" xml:space="preserve" data-source="Unicode U+0007." data-guid="10c46e351d27729a41857f1b86ddb9bc"><sentencetext xmlns="http://www.w3.org/1999/xhtml">Unicode 
+      U+0007。</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt164" xml:space="preserve" data-source="Matches the &quot;Bell&quot; control character." data-guid="ec1e0599195bd6cbca7fc0e32f011431"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配“Bell”控制字符。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt165" xml:space="preserve" data-source="Backspace" data-guid="5528770f4bce9c9b0ce9bbb8645aef45"><sentencetext xmlns="http://www.w3.org/1999/xhtml">Backspace</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt166" xml:space="preserve" data-source="\h" data-guid="f75289e3c048c1f84889b889a904fd20"><sentencetext xmlns="http://www.w3.org/1999/xhtml">\h</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt167" xml:space="preserve" data-source="Unicode U+0008." data-guid="3a8dab1ceeebcf806ff4f15ee78db344"><sentencetext xmlns="http://www.w3.org/1999/xhtml">Unicode 
+      U+0008。</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt168" xml:space="preserve" data-source="Matches the &quot;Backspace&quot; control character." data-guid="c5b7a9872063ba93503339206599b5ef"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配“Backspace”控制字符。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt169" xml:space="preserve" data-source="Tab" data-guid="e7f8cbd87d347be881cba92dad128518"><sentencetext xmlns="http://www.w3.org/1999/xhtml">Tab</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt170" xml:space="preserve" data-source="\t" data-guid="d8957008c0f71eaaea6d8b1dde49fd74"><sentencetext xmlns="http://www.w3.org/1999/xhtml">\t</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt171" xml:space="preserve" data-source="Unicode U+0009." data-guid="8d01b18b3fde9eb869e467db69504d6a"><sentencetext xmlns="http://www.w3.org/1999/xhtml">Unicode 
+      U+0009。</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt172" xml:space="preserve" data-source="Matches a tab character." data-guid="6ef1e000f8b8e5f4e69f8674fe5025a8"><sentencetext xmlns="http://www.w3.org/1999/xhtml">制表符匹配。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt173" xml:space="preserve" data-source="Unicode character" data-guid="6febc039f98f334fbea21a2c2731dd1d"><sentencetext xmlns="http://www.w3.org/1999/xhtml">Unicode 
+    字符</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt174" xml:space="preserve" data-source="\x#### or \u####" data-guid="c00284b949cf25c695189994340c8eee"><sentencetext xmlns="http://www.w3.org/1999/xhtml">\x#### 或 
+      \u####</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt175" xml:space="preserve" data-source="Matches a character given by Unicode value where #### is hexadecimal digits." data-guid="fd20c28839441a58263eabf7a3b80564"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配 Unicode 值给定的字符，其中 #### 
+      是十六进制数。</sentencetext></span> <span class="sentence" id="mt176" xml:space="preserve" data-source="You can specify a character that is outside the Basic Multilingual Plane (that is, a surrogate) with the ISO 10646 code point or with two Unicode code points that give the values of the surrogate pair." data-guid="a2e29d018e91c321e4c09bcb4d64ade5"><sentencetext xmlns="http://www.w3.org/1999/xhtml">可以用 ISO 10646 代码点或两个提供代理项对的值的 Unicode 
+      代码点指定基本多语种平面（即一个代理项）外的字符。</sentencetext></span> </p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt177" xml:space="preserve" data-source="<span class=&quot;input&quot;>\u0065</span> matches the character &quot;e&quot;." data-guid="0b290726c2654cb64d4dab5c23ffcb8a">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml"><span class="input" xmlns="http://www.w3.org/1999/xhtml">\u0065</span> 匹配字符“e”。
+													</sentencetext>
+													</span>
+												</p>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<p><span class="sentence" id="mt178" xml:space="preserve" data-source="The following table lists the two-letter abbreviations that are used to specify the General categories that are listed in the Unicode character properties database." data-guid="f3c125f199a2d9eb3327f36d6c9788d9"><sentencetext xmlns="http://www.w3.org/1999/xhtml">下表列出了用于指定 Unicode 
+字符属性数据库中列出的通用类别的两个字母的缩写词。</sentencetext></span> <span class="sentence" id="mt179" xml:space="preserve" data-source="You can use these abbreviations as part of a regular expression character set." data-guid="3ef495c64559b71fa41bd8475b6a6019"><sentencetext xmlns="http://www.w3.org/1999/xhtml">您可以在正则表达式字符集中使用这些缩写词。</sentencetext></span>
+								<span class="sentence" id="mt180" xml:space="preserve" data-source="For example, the expression [:Nd:Nl:No] matches any kind of digit." data-guid="08c56d4cfb86077552ec0f5a92c77d87"><sentencetext xmlns="http://www.w3.org/1999/xhtml">例如，表达式 [:Nd:Nl:No] 
+匹配任何类型的数字。</sentencetext></span> </p>
+							<p><span class="sentence" id="mt181" xml:space="preserve" data-source="For more information about the Unicode character properties database, see <span class=&quot;mtpsTagOuterHtml&quot; ><span>Unicode Standard 5.0 Character Properties</span></span>." data-guid="c279933a29b767df51ee7f1e43465201">
+								<sentencetext xmlns="http://www.w3.org/1999/xhtml">有关 Unicode 字符属性数据库的详细信息，请参见
+									<a href="http://go.microsoft.com/fwlink/?LinkId=95738">Unicode Standard 5.0 Character Properties</a>（Unicode Standard 5.0 字符属性）。</sentencetext>
+								</span>
+							</p>
+							<div class="caption"></div>
+							<div class="tableSection">
+								<table>
+									<tbody>
+										<tr>
+											<th>
+												<p><span class="sentence" id="mt182" xml:space="preserve" data-source="Expression" data-guid="63973cd3ad7ccf2c8d5dce94b215f683"><sentencetext xmlns="http://www.w3.org/1999/xhtml">表达式</sentencetext></span></p>
+											</th>
+											<th>
+												<p><span class="sentence" id="mt183" xml:space="preserve" data-source="Syntax" data-guid="55152fd428afc5d73e8878d27d0b09c3"><sentencetext xmlns="http://www.w3.org/1999/xhtml">语法</sentencetext></span></p>
+											</th>
+											<th>
+												<p><span class="sentence" id="mt184" xml:space="preserve" data-source="Description" data-guid="67daf92c833c41c95db874e18fcb2786"><sentencetext xmlns="http://www.w3.org/1999/xhtml">说明</sentencetext></span></p>
+											</th>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt185" xml:space="preserve" data-source="Uppercase letter" data-guid="47cbf6a33c1c75ad209ebb39434e8c16"><sentencetext xmlns="http://www.w3.org/1999/xhtml">大写字母</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt186" xml:space="preserve" data-source=":Lu" data-guid="f01d17c9e64a2f6ba14233640fc640d1"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Lu</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt187" xml:space="preserve" data-source="Matches any one uppercase letter. " data-guid="641e9b7a3a96007929226bf27233c127"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配任何一个大写字母。</sentencetext></span></p>
+												<p><span class="sentence" id="mt188" xml:space="preserve" data-source="For example:" data-guid="fa3a10105c9b5660cbdf9bbc8079647f"><sentencetext xmlns="http://www.w3.org/1999/xhtml">例如：</sentencetext></span></p>
+												<p><span class="sentence" id="mt189" xml:space="preserve" data-source="<span class=&quot;input&quot;>:Luhe</span> matches &quot;The&quot; but not &quot;the&quot;." data-guid="931a7558ed6b75858f318fee568d04d1">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml"><span class="input" xmlns="http://www.w3.org/1999/xhtml">:Luhe</span> 匹配“The”但不匹配“the”。
+													</sentencetext>
+													</span>
+												</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt190" xml:space="preserve" data-source="Lowercase letter" data-guid="bc2ff9ed57230bca54736f58c0e4f997"><sentencetext xmlns="http://www.w3.org/1999/xhtml">小写字母</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt191" xml:space="preserve" data-source=":Ll" data-guid="4bb5c166a05c73af89979d6a06f47a2e"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Ll</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt192" xml:space="preserve" data-source="Matches any one lowercase letter. " data-guid="5a6ea1c07f6c0c528b4e5274ce161569"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配任何一个小写字母。</sentencetext></span></p>
+												<p><span class="sentence" id="mt193" xml:space="preserve" data-source="For example:" data-guid="fa3a10105c9b5660cbdf9bbc8079647f"><sentencetext xmlns="http://www.w3.org/1999/xhtml">例如：</sentencetext></span></p>
+												<p><span class="sentence" id="mt194" xml:space="preserve" data-source="<span class=&quot;input&quot;>:Llhe</span> matches &quot;the&quot; but not &quot;The&quot;." data-guid="9740b4a8d422fff0b76e6780134c1c7d">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml"><span class="input" xmlns="http://www.w3.org/1999/xhtml">:Llhe</span> 匹配“the”但不匹配“The”。
+													</sentencetext>
+													</span>
+												</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt195" xml:space="preserve" data-source="Title case letter" data-guid="e5710e9816c7fe2bd28ac3e120fb2510"><sentencetext xmlns="http://www.w3.org/1999/xhtml">词首大写字母</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt196" xml:space="preserve" data-source=":Lt" data-guid="45798c551f90e4e4a848a21e136caaee"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Lt</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt197" xml:space="preserve" data-source="Matches characters that combine an uppercase letter with a lowercase letter, for example, Nj and Dz." data-guid="17349397f980da9dbb2b8509b7f56dae"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配将大写字母和小写字母结合的字符，例如，Nj 和 
+      Dz。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt198" xml:space="preserve" data-source="Modifier letter" data-guid="3225b06b91fcdf562209cc3fb0302956"><sentencetext xmlns="http://www.w3.org/1999/xhtml">修饰符字母</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt199" xml:space="preserve" data-source=":Lm" data-guid="72f12c24c9f828275269c8d74c490f3f"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Lm</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt200" xml:space="preserve" data-source="Matches letters or punctuation, such as commas, cross accents, and double prime, that are used to indicate modifications to the preceding letter." data-guid="c9a7c64f00721077a3abcdbfce1db705"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配字母或标点符号，例如逗号、交叉重音符和双撇号，用于表示对前一字母的修饰。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt201" xml:space="preserve" data-source="Other letter" data-guid="29e11487b7421d318ec2cc3de7a083a1"><sentencetext xmlns="http://www.w3.org/1999/xhtml">其他字母</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt202" xml:space="preserve" data-source=":Lo" data-guid="cdd7bce690d517fd6d9cfe07918681c0"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Lo</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt203" xml:space="preserve" data-source="Matches other letters, such as gothic letter ahsa." data-guid="2c0823991e510259c74513d062447c27"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配其他字母，如哥特体字母 
+      ahsa。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt204" xml:space="preserve" data-source="Decimal digit" data-guid="7216743844e90f938bcb4c94d7b08549"><sentencetext xmlns="http://www.w3.org/1999/xhtml">十进制数字</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt205" xml:space="preserve" data-source=":Nd" data-guid="f024016ae1b6cfc9b0abdf5b0f4ed533"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Nd</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt206" xml:space="preserve" data-source="Matches decimal digits, such as 0-9 and their full-width equivalents." data-guid="634edeb220a82c16d8f49e86d923817b"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配十进制数（如 
+      0-9）和它们的双字节等效数。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt207" xml:space="preserve" data-source="Letter digit" data-guid="cd342564c204f3e769695f2581b41b34"><sentencetext xmlns="http://www.w3.org/1999/xhtml">字母数字</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt208" xml:space="preserve" data-source=":Nl" data-guid="40097da2309adea3c5bb3e2f462d5429"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Nl</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt209" xml:space="preserve" data-source="Matches letter digits, such as roman numerals and ideographic number zero." data-guid="bd2189b5c898b705d8f8f12ff31a33d4"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配字母数字，例如罗马数字和表意数字零。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt210" xml:space="preserve" data-source="Other digit" data-guid="e51340a74548bfe033379055b338b7d2"><sentencetext xmlns="http://www.w3.org/1999/xhtml">其他数字</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt211" xml:space="preserve" data-source=":No" data-guid="b0a4fb298f200f7113fc15c81e8bfc9f"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:No</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt212" xml:space="preserve" data-source="Matches other digits, such as old italic number one." data-guid="e925a45d544d91a53848c48bcf39c625"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配其他数字，如旧斜体数字一。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt213" xml:space="preserve" data-source="Open punctuation" data-guid="2736bfb747e39443ef7828b25b0b8a9b"><sentencetext xmlns="http://www.w3.org/1999/xhtml">开始标点符号</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt214" xml:space="preserve" data-source=":Ps" data-guid="70327c970f2bb61835607030f059a7de"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Ps</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt215" xml:space="preserve" data-source="Matches opening punctuation, such as open brackets and braces." data-guid="0076364acfc38c09e8e9cd9288278443"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配开始标点符号，例如左方括号和左大括号。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt216" xml:space="preserve" data-source="Close punctuation" data-guid="6cea4cdae8b602b5ea3051568ca5cddf"><sentencetext xmlns="http://www.w3.org/1999/xhtml">结束标点符号</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt217" xml:space="preserve" data-source=":Pe" data-guid="fc0e1a722fc9ba21c190764793e48909"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Pe</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt218" xml:space="preserve" data-source="Matches closing punctuation, such as closing brackets and braces." data-guid="0a170ebaef7b85df0fcaf8ca6d29dc35"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配结束标点符号，例如右方括号和右大括号。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt219" xml:space="preserve" data-source="Initial quote punctuation" data-guid="1d03067ec49081b8d60c974ac9e32659"><sentencetext xmlns="http://www.w3.org/1999/xhtml">左引号</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt220" xml:space="preserve" data-source=":Pi" data-guid="de348fe3de7fbca50c2eab1868a1a000"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Pi</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt221" xml:space="preserve" data-source="Matches initial double quotation marks." data-guid="5f138f3ca497a2c317992313793e2e64"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配左双引号。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt222" xml:space="preserve" data-source="Final quote punctuation" data-guid="4f5fb396bae71e91ef8254b006f693e2"><sentencetext xmlns="http://www.w3.org/1999/xhtml">右引号</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt223" xml:space="preserve" data-source=":Pf" data-guid="3afde6dc082bed9d0fac07a49907e0b3"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Pf</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt224" xml:space="preserve" data-source="Matches single quotation marks and ending double quotation marks. " data-guid="81fc1be951d99808d8f3b3f5159211b1"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配单引号和右双引号。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt225" xml:space="preserve" data-source="Dash punctuation" data-guid="04ebd531e64a18242ae5eb091b327f89"><sentencetext xmlns="http://www.w3.org/1999/xhtml">破折号</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt226" xml:space="preserve" data-source=":Pd" data-guid="e5d6cccaa133479993a3b969008788fc"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Pd</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt227" xml:space="preserve" data-source="Matches the dash mark." data-guid="c8a947b7aff75e44fc5393312e770b98"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配破折号标记。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt228" xml:space="preserve" data-source="Connector punctuation" data-guid="29678c5405d137756bf63dedb6448d07"><sentencetext xmlns="http://www.w3.org/1999/xhtml">连接符号</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt229" xml:space="preserve" data-source=":Pc" data-guid="aca7adc1291c20a8a3722a33714bc3fd"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Pc</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt230" xml:space="preserve" data-source="Matches the underscore or underline mark." data-guid="e95ca1913deec7675302d87025918bfa"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配下划线标记。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt231" xml:space="preserve" data-source="Other punctuation" data-guid="aca55e4215bdefa2afdc6812578f935a"><sentencetext xmlns="http://www.w3.org/1999/xhtml">其他标点符号</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt232" xml:space="preserve" data-source=":Po" data-guid="4856d8df560bb3bce0ecab0de95618d8"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Po</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt233" xml:space="preserve" data-source="Matches (,), ?, &quot;, !, @, #, %, &amp;amp;, *, \, (:), (;), ', and /." data-guid="0dae9cb5c7416e9dd42cacdffceaafab"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配 
+      (,)、?、"、!、@、#、%、&amp;、*、\、(:)、(;)、' 和 /。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt234" xml:space="preserve" data-source="Space separator" data-guid="5ff7883e718d31d59e455d94c22283c5"><sentencetext xmlns="http://www.w3.org/1999/xhtml">空白分隔符</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt235" xml:space="preserve" data-source=":Zs" data-guid="589e9ed88fe164ccecd94e4a235ede80"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Zs</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt236" xml:space="preserve" data-source="Matches blanks." data-guid="23f8d97811008fc09233e26d11b65823"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配空白。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt237" xml:space="preserve" data-source="Line separator" data-guid="cd584fede2e39e68da18224f14ed8dd4"><sentencetext xmlns="http://www.w3.org/1999/xhtml">行分隔符</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt238" xml:space="preserve" data-source=":Zl" data-guid="711380bc9ac25973322deb618acf27a5"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Zl</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt239" xml:space="preserve" data-source="Matches the Unicode character U+2028." data-guid="b438a6dd8125efbacdaad69a98ea50ac"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配 Unicode 字符 
+      U+2028。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt240" xml:space="preserve" data-source="Paragraph separator" data-guid="96e1c4147d8d7fd332bf79aba339dc4d"><sentencetext xmlns="http://www.w3.org/1999/xhtml">段落分隔符</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt241" xml:space="preserve" data-source=":Zp" data-guid="3eacd0e4108273e1fedf25207d17a8a6"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Zp</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt242" xml:space="preserve" data-source="Matches the Unicode character U+2029." data-guid="a7389e2bd3ee791453caa576c44410c0"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配 Unicode 字符 
+      U+2029。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt243" xml:space="preserve" data-source="Non-spacing mark" data-guid="4a1cf1903c9bbf984402b101f664a98d"><sentencetext xmlns="http://www.w3.org/1999/xhtml">无间隔标记</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt244" xml:space="preserve" data-source=":Mn" data-guid="2963e894a9b63e92a56ab5c771d9f66d"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Mn</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt245" xml:space="preserve" data-source="Matches non-spacing marks." data-guid="5887e38aee36b9e22a825e07bb6aafea"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配无间隔标记。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt246" xml:space="preserve" data-source="Combining mark" data-guid="3c186516f3d129bbff40e2c96b28271f"><sentencetext xmlns="http://www.w3.org/1999/xhtml">组合标记</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt247" xml:space="preserve" data-source=":Mc" data-guid="2076189009dac16e258b130b05618c55"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Mc</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt248" xml:space="preserve" data-source="Matches combining marks." data-guid="e24f50786c2434a37fc32ccbb3dc6e89"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配组合标记。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt249" xml:space="preserve" data-source="Enclosing mark" data-guid="b3cf0da65a86a0b6e25ae4106e42ec38"><sentencetext xmlns="http://www.w3.org/1999/xhtml">封闭标记</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt250" xml:space="preserve" data-source=":Me" data-guid="4fac5f5ec451196e934d9509f730bd59"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Me</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt251" xml:space="preserve" data-source="Matches enclosing marks. " data-guid="cf731687758c5001352f3b0572435a75"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配封闭标记。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt252" xml:space="preserve" data-source="Math symbol" data-guid="24100fc8844b894861e20531a790df65"><sentencetext xmlns="http://www.w3.org/1999/xhtml">数学符号</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt253" xml:space="preserve" data-source=":Sm" data-guid="8e40d395e29e87fcff1f53f2c4893010"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Sm</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt254" xml:space="preserve" data-source="Matches +, =, ~, |, &amp;lt;, and &amp;gt;." data-guid="dff632faeea137b3d866fc021d7fa46d"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配 +、=、~、|、&lt; 和 
+      &gt;。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt255" xml:space="preserve" data-source="Currency symbol" data-guid="78073d01be2a0b7b3c344c4a671a9fc6"><sentencetext xmlns="http://www.w3.org/1999/xhtml">货币符号</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt256" xml:space="preserve" data-source=":Sc" data-guid="19e6315e6535745f1fc916530f4122ec"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Sc</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt257" xml:space="preserve" data-source="Matches $ and other currency symbols." data-guid="f51b4d10b909c0c1f77968fc847f1664"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配 $ 
+      和其他货币符号。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt258" xml:space="preserve" data-source="Modifier symbol" data-guid="687087fdbdcd5f0e018f7b27d2aa188f"><sentencetext xmlns="http://www.w3.org/1999/xhtml">修饰符号</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt259" xml:space="preserve" data-source=":Sk" data-guid="f04fa5c0a45084c531cdbd32ab47bbcb"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Sk</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt260" xml:space="preserve" data-source="Matches modifier symbols, such as circumflex accent, grave accent, and macron." data-guid="6cbe9db7ab50aacd44f2ee06f61b065b"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配修饰符号，如抑扬音、抑音符号和长音符号。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt261" xml:space="preserve" data-source="Other symbol" data-guid="98d0fa8b1f1a5bd70c83fb01480c1e05"><sentencetext xmlns="http://www.w3.org/1999/xhtml">其他符号</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt262" xml:space="preserve" data-source=":So" data-guid="a1b7606bd2652e280f6fffaa2178fd07"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:So</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt263" xml:space="preserve" data-source="Matches other symbols, such as the copyright sign, pilcrow sign, and the degree sign." data-guid="c27850a4bbe76d75f6c8ee05a37685ba"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配其他符号，如版权符号、段落标记和度数符号。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt264" xml:space="preserve" data-source="Other control" data-guid="e844d9c12197f9ea0c7fc81cef9864e2"><sentencetext xmlns="http://www.w3.org/1999/xhtml">其他控制</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt265" xml:space="preserve" data-source=":Cc" data-guid="1bdd3b3952cbd9dd854d4853453e0f68"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Cc</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt266" xml:space="preserve" data-source="Matches Unicode control characters such as TAB and NEWLINE." data-guid="4d15e751b46315c1979c2cdf4b555a04"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配类似 TAB 和 NEWLINE 这样的 Unicode 
+      控制字符。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt267" xml:space="preserve" data-source="Other format" data-guid="3390f037edbdcd377adec02985a25a06"><sentencetext xmlns="http://www.w3.org/1999/xhtml">其他格式</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt268" xml:space="preserve" data-source=":Cf" data-guid="3a9e12c62423078871ba0aaa73b610df"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Cf</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt269" xml:space="preserve" data-source="Formatting control character, such as the bi-directional control characters." data-guid="ab366218be280b8b362ab14f7f7d0924"><sentencetext xmlns="http://www.w3.org/1999/xhtml">格式控制字符，例如双向控制字符。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt270" xml:space="preserve" data-source="Surrogate" data-guid="4bcea80df6bc125e52a0361152f5a87a"><sentencetext xmlns="http://www.w3.org/1999/xhtml">代理项</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt271" xml:space="preserve" data-source=":Cs" data-guid="483840bea8fc45122da7146326fb81c1"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Cs</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt272" xml:space="preserve" data-source="Matches half of a surrogate pair." data-guid="4e0b99d836ae782406dc2f5b5f156ba9"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配代理项对的一半。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt273" xml:space="preserve" data-source="Other private-use" data-guid="4dcf8225d895e0481d37a61ed0b87c53"><sentencetext xmlns="http://www.w3.org/1999/xhtml">其他私用</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt274" xml:space="preserve" data-source=":Co" data-guid="893fefe0716858ef90fd7e0c519fc43c"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Co</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt275" xml:space="preserve" data-source="Matches any character from the private-use area." data-guid="8ddbaf6195345c6beba81191c3411ef8"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配私用区域的任何字符。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt276" xml:space="preserve" data-source="Other not assigned" data-guid="f3f237535254189e26f04d9eb5fb62e9"><sentencetext xmlns="http://www.w3.org/1999/xhtml">其他未分配字符</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt277" xml:space="preserve" data-source=":Cn" data-guid="ebb462e2f72657e9a67d52b53f46131d"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Cn</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt278" xml:space="preserve" data-source="Matches characters that do not map to a Unicode character." data-guid="3df9450d9e84b1f1283c56e4a5112a9b"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配未映射到 Unicode 
+      字符的字符。</sentencetext></span></p>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<p><span class="sentence" id="mt279" xml:space="preserve" data-source="In addition to the standard Unicode character properties, the following properties may also be specified as part of a character set." data-guid="3ae28c10a29a3c70dff0d1601814d09b"><sentencetext xmlns="http://www.w3.org/1999/xhtml">除标准 Unicode 
+字符属性外，还可以指定下列属性作为字符集的一部分。</sentencetext></span></p>
+							<div class="caption"></div>
+							<div class="tableSection">
+								<table>
+									<tbody>
+										<tr>
+											<th>
+												<p><span class="sentence" id="mt280" xml:space="preserve" data-source="Expression" data-guid="63973cd3ad7ccf2c8d5dce94b215f683"><sentencetext xmlns="http://www.w3.org/1999/xhtml">表达式</sentencetext></span></p>
+											</th>
+											<th>
+												<p><span class="sentence" id="mt281" xml:space="preserve" data-source="Syntax" data-guid="55152fd428afc5d73e8878d27d0b09c3"><sentencetext xmlns="http://www.w3.org/1999/xhtml">语法</sentencetext></span></p>
+											</th>
+											<th>
+												<p><span class="sentence" id="mt282" xml:space="preserve" data-source="Description" data-guid="67daf92c833c41c95db874e18fcb2786"><sentencetext xmlns="http://www.w3.org/1999/xhtml">说明</sentencetext></span></p>
+											</th>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt283" xml:space="preserve" data-source="Alpha" data-guid="2c1743a391305fbf367df8e4f069f9f9"><sentencetext xmlns="http://www.w3.org/1999/xhtml">Alpha</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt284" xml:space="preserve" data-source=":Al" data-guid="0437cf0423063572e838b77d1ef45940"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Al</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt285" xml:space="preserve" data-source="Matches any one character. " data-guid="f6e585c54ce83e42deeac5923aa117eb"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配任何一个字符。</sentencetext></span></p>
+												<p><span class="sentence" id="mt286" xml:space="preserve" data-source="For example, <span class=&quot;input&quot;>:Alhe</span> matches words such as &quot;The&quot;, &quot;then&quot;, and &quot;reached&quot;." data-guid="0651a872c4232432b723aea77de270db">
+													<sentencetext xmlns="http://www.w3.org/1999/xhtml">例如，<span class="input" xmlns="http://www.w3.org/1999/xhtml">:Alhe</span> 匹配“The”、“then”、“reached”等单词。
+													</sentencetext>
+													</span>
+												</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt287" xml:space="preserve" data-source="Numeric" data-guid="49057168d24dc9566533ec48326ced2c"><sentencetext xmlns="http://www.w3.org/1999/xhtml">数值</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt288" xml:space="preserve" data-source=":Nu" data-guid="848342311594302fbf2b82ad6cd35a43"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Nu</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt289" xml:space="preserve" data-source="Matches any one number or digit." data-guid="96c33e45e0a1bd4f39dad26815c4be4d"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配任何一个数或数字。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt290" xml:space="preserve" data-source="Punctuation" data-guid="9ac6d441030eb0844ffb83ba4f100c94"><sentencetext xmlns="http://www.w3.org/1999/xhtml">标点</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt291" xml:space="preserve" data-source=":Pu" data-guid="0eb2935c4aa0647c2d1013534c135488"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Pu</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt292" xml:space="preserve" data-source="Matches any one punctuation mark, such as ?, @, ', and so on." data-guid="91055cca0705f5038af2d12396889ecc"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配任何一个标点符号，如 ?、@、' 
+      等等。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt293" xml:space="preserve" data-source="White space" data-guid="ee950bcbe23366fecaeaed7d5864a7da"><sentencetext xmlns="http://www.w3.org/1999/xhtml">空白</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt294" xml:space="preserve" data-source=":Wh" data-guid="7ab72be70047a8f02e193853af7858ce"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Wh</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt295" xml:space="preserve" data-source="Matches all kinds of white space, such as publishing and ideographic spaces." data-guid="938fd1f8829ae341f6bf153f557a4627"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配所有类型的空白，如印刷和表意文字的空白。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt296" xml:space="preserve" data-source="Bidi" data-guid="ca942afbdc13c5bd23b8a44919a40305"><sentencetext xmlns="http://www.w3.org/1999/xhtml">双向</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt297" xml:space="preserve" data-source=":Bi" data-guid="dcb58ad727c95d87f823ca779f648f06"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Bi</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt298" xml:space="preserve" data-source="Matches characters from right-to-left scripts, such as Arabic and Hebrew." data-guid="29f1d0dfc3f9213fe56570b9fb4253a2"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配诸如阿拉伯文和希伯来文这类从右向左书写的字符。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt299" xml:space="preserve" data-source="Hangul" data-guid="7a963fe205ce2007d801aad470f7e807"><sentencetext xmlns="http://www.w3.org/1999/xhtml">朝鲜文</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt300" xml:space="preserve" data-source=":Ha" data-guid="2c6565f9c1e52d19126d9b8c3411d4df"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Ha</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt301" xml:space="preserve" data-source="Matches Korean Hangul and combining Jamos." data-guid="fa7ff29cdf227e060177bf5c1ab28468"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配朝鲜文和组合朝鲜文字母。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt302" xml:space="preserve" data-source="Hiragana" data-guid="7b3571e7836374a853fad26971060b13"><sentencetext xmlns="http://www.w3.org/1999/xhtml">平假名</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt303" xml:space="preserve" data-source=":Hi" data-guid="120caa2b0823de60cb58c65168c92a33"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Hi</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt304" xml:space="preserve" data-source="Matches hiragana characters." data-guid="b790db1166cd7d0654750f7ebfabdd87"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配平假名字符。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt305" xml:space="preserve" data-source="Katakana" data-guid="8ad021c0a56a379c87bdecba27960972"><sentencetext xmlns="http://www.w3.org/1999/xhtml">片假名</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt306" xml:space="preserve" data-source=":Ka" data-guid="0a6b9767d6c246469f04fb53c55d112c"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Ka</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt307" xml:space="preserve" data-source="Matches katakana characters." data-guid="4c735f9d32cc64c71db193c6f763f813"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配片假名字符。</sentencetext></span></p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p><span class="sentence" id="mt308" xml:space="preserve" data-source="Ideographic/Han/Kanji" data-guid="10ff70aa545833dfebf304f1c31b1e2d"><sentencetext xmlns="http://www.w3.org/1999/xhtml">表意文字/汉字/日文汉字</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt309" xml:space="preserve" data-source=":Id" data-guid="0a6ab56e66f6ec58afc13dc841fa5364"><sentencetext xmlns="http://www.w3.org/1999/xhtml">:Id</sentencetext></span></p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt310" xml:space="preserve" data-source="Matches ideographic characters, such as Han and kanji. " data-guid="9c3ecfaf60187ab5d0b1b612f8eb5673"><sentencetext xmlns="http://www.w3.org/1999/xhtml">匹配表意文字字符，如汉字和日文汉字。</sentencetext></span></p>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div class="LW_CollapsibleArea_TitleDiv">
+							<div>
+								<a class="LW_CollapsibleArea_TitleAhref" title="折叠" href="javascript:void(0)"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">请参见</span></a>
+								<div class="LW_CollapsibleArea_HrDiv">
+									<hr class="LW_CollapsibleArea_Hr">
+								</div>
+							</div>
+						</div>
+						<div class="sectionblock">
+							<a id="seeAlsoToggle"></a>
+							<h4 class="subHeading">参考</h4>
+							<div class="seeAlsoStyle"><span><a href="http://msdn.microsoft.com/zh-cn/library/afy96z92(v=vs.100).aspx">通配符 
+(Visual Studio)</a></span></div>
+							<div class="seeAlsoStyle"><span><a href="http://msdn.microsoft.com/zh-cn/library/87a13zt0(v=vs.100).aspx">“查找和替换”窗口 
+-&gt;“快速查找”</a></span></div>
+							<div class="seeAlsoStyle"><span><a href="http://msdn.microsoft.com/zh-cn/library/yht979e0(v=vs.100).aspx">“查找和替换”窗口 
+-&gt;“快速替换”</a></span></div>
+							<div class="seeAlsoStyle"><span><a href="http://msdn.microsoft.com/zh-cn/library/dechx2tz(v=vs.100).aspx">“查找和替换”窗口 
+-&gt;“在文件中查找”</a></span></div>
+							<div class="seeAlsoStyle"><span><a href="http://msdn.microsoft.com/zh-cn/library/a40ywt0a(v=vs.100).aspx">“查找和替换”窗口 
+-&gt;“在文件中替换”</a></span></div>
+							<div class="seeAlsoStyle"><span><a href="http://msdn.microsoft.com/zh-cn/library/c338aexd(v=vs.100).aspx">带参数的 
+Visual Studio 命令</a></span></div>
+							<h4 class="subHeading">其他资源</h4>
+							<div class="seeAlsoStyle"><span><a href="http://msdn.microsoft.com/zh-cn/library/139eef4h(v=vs.100).aspx">查找和替换</a></span></div>
+						</div>
+					</div>
+					<div>
+						<div class="LW_CollapsibleArea_TitleDiv">
+							<div>
+								<a class="LW_CollapsibleArea_TitleAhref" title="折叠" href="javascript:void(0)"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">修订记录</span></a>
+								<div class="LW_CollapsibleArea_HrDiv">
+									<hr class="LW_CollapsibleArea_Hr">
+								</div>
+							</div>
+						</div>
+						<div class="sectionblock">
+							<a id="changeHistoryToggle"></a>
+							<div class="caption"></div>
+							<div class="tableSection">
+								<table>
+									<tbody>
+										<tr>
+											<th>
+												<p><span class="sentence" id="mt311" xml:space="preserve" data-source="Date" data-guid="5fc732311905cb27e82d67f4f6511f7f"><sentencetext xmlns="http://www.w3.org/1999/xhtml">Date</sentencetext></span></p>
+											</th>
+											<th>
+												<p><span class="sentence" id="mt312" xml:space="preserve" data-source="History" data-guid="3cd15f8f2940aff879df34df4e5c2cd1"><sentencetext xmlns="http://www.w3.org/1999/xhtml">修订记录</sentencetext></span></p>
+											</th>
+											<th>
+												<p><span class="sentence" id="mt313" xml:space="preserve" data-source="Reason" data-guid="40bea8d637cdf2c1b07fcf0630482b73"><sentencetext xmlns="http://www.w3.org/1999/xhtml">原因</sentencetext></span></p>
+											</th>
+										</tr>
+										<tr>
+											<td>
+												<p></p>
+												<p>2010 年 6 月</p>
+											</td>
+											<td>
+												<p><span class="sentence" id="mt314" xml:space="preserve" data-source="Fixed incorrect expressions in Grouping." data-guid="9cf32ceb20754ee14a8f54e3d92aa395"><sentencetext xmlns="http://www.w3.org/1999/xhtml">分组中固定的不正确表达式。</sentencetext></span></p>
+											</td>
+											<td>
+												<p></p>
+												<p>客户反馈</p>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>
