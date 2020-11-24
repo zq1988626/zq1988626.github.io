@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>monaco</title>
+</head>
+<body>
+    <div id="editor" style="height: 400px; width:600px;"></div>
+	<script>var require = { paths: { 'vs': 'https://cdn.bootcdn.net/ajax/libs/monaco-editor/0.21.2/min/vs' } };</script>
+	<script src="https://cdn.bootcdn.net/ajax/libs/monaco-editor/0.21.2/min/vs/loader.min.js"></script>
+	<script src="https://cdn.bootcdn.net/ajax/libs/monaco-editor/0.21.2/min/vs/editor/editor.main.nls.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/monaco-editor/0.21.2/min/vs/editor/editor.main.js"></script>
+    
+    <script>
+        var editor = null;
+        window.onload=function(){
+            initMonaco(function(){
+                editor = updateEditor
+            })
+        }
+
+
+
+		var defaultCode = `<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		.txt{background:#f004}
+    </style>
+</head>
+<body>
+	标题：<input id="txt" class="txt" value="test" />
+	<input type="button" onclick="showmsg()" value="显示">
+	<script>
+		function showmsg(){
+			alert("msg:"+document.getElementById("txt").value);
+		}
+	\<\/script\>
+</body>
+</html>`
+		var preloaded = {};
+		function xhr(url) {
+			if (preloaded[url]) {
+				return Promise.resolve(preloaded[url]);
+			}
+			return fetch(url).then(d=>d.text());
+		}
+		function initMonaco(callback){
+			require(['vs/editor/editor.main'], function () {
+				/*
+				var MODES = (function() {
+					var modesIds = monaco.languages.getLanguages().map(function(lang) { return lang.id; });
+					modesIds.sort();
+
+					return modesIds.map(function(modeId) {
+						return {
+							modeId: modeId,
+							sampleURL: 'index/samples/sample.' + modeId + '.txt'
+						};
+					});
+				})();
+				*/
+				callback();
+			});
+		}
+		
+		function loadSample(editor,ele,lang,url) {
+			return xhr(url).then(data=>{
+				return updateEditor(editor,ele,lang,data);
+			}).catch(err=>{
+				if (editor) {
+					if (editor.getModel()) {
+						editor.getModel().dispose();
+					}
+					editor.dispose();
+					editor = null;
+				}
+				console.error(err);
+				return ;
+			})
+		}
+
+		function updateEditor(editor,ele,lang,code){
+			if (!editor) {
+				ele.innerHTML="";
+				editor = monaco.editor.create(ele, {
+					model: null,
+				});
+			}
+
+			var oldModel = editor.getModel();
+			var newModel = monaco.editor.createModel(code, lang);
+			editor.setModel(newModel);
+			if (oldModel) {
+				oldModel.dispose();
+			}
+			return Promise.resolve(editor);
+		}
+    </script>
+</body>
+</html>
