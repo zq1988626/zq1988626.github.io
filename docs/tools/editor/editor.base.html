@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="sigle">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>html editor</title>
+	<link rel="stylesheet" href="../../css/layout.css">
+	<style>
+		iframe{
+			border: 1px solid #ccc;
+		}
+		textarea{
+			height: auto !important;
+		}
+	</style>
+</head>
+<body>
+	<div id="app" style="height: 100%;" class="flex">
+		<div class="flex flex-row" style="padding:8px;">
+			<div class="flex-item">
+				<input @click="clean" type=button value=清除 />
+				<input @click="about" type=button value=关于 />
+				<input @click="help" type=button value=帮助 />
+				<label>
+					<input @click="openWindowRender" type="button" value="独立窗口渲染" />
+				</label>
+				<label>
+					<input @change="update" v-model="viewMode" type="checkbox" />
+					预览
+				</label>
+			</div>
+			<div>
+				<label>
+					常用模板列表：
+					<select v-model="currentTemplate" placeholder="请选择">
+						<option v-for="item in templates" :value="item.url">{{item.name}}</option>
+					</select>
+				</label>
+				<input :disabled="!currentTemplate" @click="currentTemplate&&loadTemplate(currentTemplate)" type=button value="加载" />
+			</div>
+		</div>
+		<div class="flex flex-row flex-item">
+			<textarea @keyup="update" v-model="code" class="flex-item" name=tester></textarea>
+			<iframe v-if="viewMode" ref="iframe" class="flex-item"></iframe>
+		</div>
+		
+	</div>
+	<script src="../../js/utils.js"></script>
+	<script src="../../js/vue.min.js"></script>
+	<script>
+		function updateWin(win,v){
+			win.document.open();
+			win.document.clear();
+			win.document.write(v);
+			win.document.close();
+		}
+		function openNewWindow(v) {
+			var win = window.open("", "newwin", "height=220,width=470,toolbar=no,scrollbars=" + scroll + ",menubar=no");
+			win.document.write(v);
+			win.document.close();
+			return win;
+		}
+
+		var html_help = [
+		"<body bgcolor='white' text='black' alink='blue'vlink='blue' link='blue'><TITLE>帮助信息</TITLE>",
+			"<center>你只要把你想显示的代码放到上页的输入框中，你自己也可以写代码，按显示键就能显示你的页面内容</center><br>",
+			"<center><a href='javascript:close()'>关闭本窗口</a></Center>",
+		"</body>"
+		].join("");
+
+		window.onload=function(){
+			window.openWin = null;
+			window.obj = new Vue({
+				el:"#app",
+				data:function(){
+					return {
+						code:defaultCode,
+						viewMode:true,
+						currentTemplate:null,
+						templates:[
+							{name:"vue",url:"templates/vue.html"}
+						]
+					}
+				},
+				mounted:function(){
+					this.update();
+					
+					initMonaco(function(){
+						loadSample(editor,ele,lang,url)
+					});
+				},
+				methods:{
+					update:zUtils.debounce(function(v){
+						if(this.$refs.iframe){
+							updateWin(this.$refs.iframe.contentWindow,this.code);
+						}
+						if(openWin && !openWin.closed){
+							updateWin(openWin,this.code);
+						}
+					}),
+					clean:function(){
+						if(confirm("确定要清除吗？", '')) {
+							this.code = "";
+							this.update();
+						}
+					},
+					about:function () {
+						alert("HTML代码直接显示出页面来")
+					},
+					help:function(){
+						openNewWindow(html_help);
+					},
+					loadTemplate:function(url){
+						fetch(url).then(d=>d.text()).then(t=>{
+							this.code = t;
+							this.update();
+						});
+					},
+					openWindowRender:function(){
+						if(!openWin || openWin.closed){
+							openWin = openNewWindow(this.showCode);
+						}
+						this.update();
+					}
+				}
+			})
+		}
+
+		
+
+		var defaultCode = `<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		.txt{background:#f004}
+    </style>
+</head>
+<body>
+	标题：<input id="txt" class="txt" value="test" />
+	<input type="button" onclick="showmsg()" value="显示">
+	<script>
+		function showmsg(){
+			alert("msg:"+document.getElementById("txt").value);
+		}
+	\<\/script\>
+</body>
+</html>`
+	</script>
+</body>
+</html>
