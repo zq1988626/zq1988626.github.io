@@ -3,8 +3,6 @@
 测试文档
 
 > An awesome project.
-ddd
 
-> 关于我 
+> 关于我
 
-![](./imgs/myscancode.jpg)
