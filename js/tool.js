@@ -1,15 +1,18 @@
 window.Tool=(function(){
-    return {
-        help,
-        copy // 拦截所有 copy 事件
+    console.log("加载完成");
+    var cmd = {
+        copy:["屏蔽复制拦截",()=>window.addEventListener("copy",e=>e.stopImmediatePropagation(),true)]
     }
+
+    
+    function getcmdhelp(name){return `fetch("//cnxzq.github.io/js/tool.js").then(d=>d.text()).then(t=>eval(t),Tool.${name}())`}
     function help(){
-        console.log("Tool help");
-        console.log(`fetch("//cnxzq.github.io/js/tool.js").then(d=>d.text()).then(eval)`);
-        console.log("Tool.copy()");
-        console.log(`fetch("//cnxzq.github.io/js/tool.js").then(d=>d.text()).then(eval).then(()=>Tool.copy())`);
+        console.log("代码示例");
+        for(var a in cmd){
+            console.log(cmd[a],":",getcmdhelp(a));
+        }
     }
-    function copy(){
-        window.addEventListener("copy",e=>e.stopImmediatePropagation(),true)
-    }
+    var rev = {help};
+    for(var a in cmd){ rev[a]=cmd[a][1]; }
+    return rev;
 })()
