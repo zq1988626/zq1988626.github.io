@@ -147,6 +147,7 @@
                                 "source":this.npmdata.name,"target":item.id,"value":1
                             }))
                         });
+                        this.$refs.netchart.innerHTML = "";
                         this.$refs.netchart.append(ele);
                     })
                 },
@@ -237,6 +238,7 @@
                 .data(nodes)
                 .join("circle")
                 .attr("r", 5)
+                .attr("title", d=>d.id)
                 .attr("fill", color())
                 .call(drag(simulation));
 
