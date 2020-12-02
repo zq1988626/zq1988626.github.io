@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html class="sigle" lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/layout.css">
+</head>
+<body>
+    <div id="counter">
+        <div class="flex flex-row">
+            <div class="flex-item">
+                github
+            </div>
+            <div>
+                <a v-if="!user.login" href="/login">登录</a>
+                <a v-else href="/logout">退出</a>
+            </div>
+        </div>
+        <div class="flex flex-row fill">
+            <div>
+                <ul>
+                    <li>用户信息</li>
+                </ul>
+            </div>
+            <div class="flex-item">
+                <ul>
+                    <li v-for="item in users" :key="item">{{item[0]}}:{{item[1]}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.0.2/vue.global.prod.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/js-cookie/latest/js.cookie.min.js"></script>
+    <script>
+        window.onload=function(){
+            var app = initApp();
+            var vm = app.mount('#counter');
+            var user = window.Cookies.getJSON("user");
+            if(user){
+                vm.setUser(user);
+            }
+        }
+
+        function initApp(){
+            return Vue.createApp({
+                data:function(){
+                    return {
+                        user:{}
+                    }
+                },
+                computed:{
+                    users:function(){
+                        var rev = [];
+                        var user = this.user;
+                        for(var a in user){
+                            rev.push([a,user[a]])
+                        }
+                        return rev;
+                    }
+                },
+                methods:{
+                    setUser:function(user){
+                        this.user = user;
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

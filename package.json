@@ -5,7 +5,13 @@
   "repository": "https://github.com/cnxzq/cnxzq.github.io.git",
   "author": "xczq <290353142@qq.com>",
   "scripts": {
-    "push":"git add . & git commit -m \"from kjsoft 2020-04-13\" & git push"
+    "push": "git add . & git commit -m \"from kjsoft 2020-04-13\" & git push"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "arena-webhub": "^1.0.8",
+    "axios": "^0.21.0",
+    "express": "^4.17.1",
+    "open": "^7.3.0"
+  }
 }

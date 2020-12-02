@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,body{
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+        }
+        .label{
+            cursor: pointer;
+        }
+        code{
+            padding: 0.5rem;
+            background: #ccc6;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" style="display: flex;flex-direction: column; width: 100%;height: 100%;">
+        <div style="display:flex;">
+            <div>
+                <label>{{registry}}/</label>
+                <input v-model="searchname" @keyup.enter="updatenpmdata" />
+                <button @click="updatenpmdata">请求</button>
+            </div>
+            <div style="flex:1;text-align:right">
+                <label><input v-model="viewtype" name="viewType" type="radio" value="json" />JSON</label>
+                <label><input v-model="viewtype" name="viewType" type="radio" value="readme" />README</label>
+                <label><input v-model="viewtype" name="viewType" type="radio" value="netchart" />网络图</label>
+            </div>
+        </div>
+        <div style="display: flex;flex:1;align-items:stretch;height: 0;">
+            <div style="padding:8px;max-width: 50%;overflow: auto;">
+                <div v-if="npmdata">
+                    <h3>
+                        {{npmdata.name}}
+                        <select v-model="version">
+                            <option v-for="item in versions" :value="item">{{item+(latest==item?"最新正式版":"")}}</option>
+                        </select>
+                    </h3>
+
+                    <div v-if="dependencies.length">
+                        <h4>依赖</h4>
+                        <ul>
+                            <li v-for="item in dependencies">
+                                <a :href="'#'+item" @click="searchname=item;updatenpmdata()">{{item}}</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div v-if="devDependencies.length">
+                        <h4>开发依赖</h4>
+                        <ul>
+                            <li v-for="item in devDependencies">
+                                <a :href="'#'+item" @click="searchname=item;updatenpmdata()">{{item}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <textarea v-if="viewtype=='json'" :value="npmdatastr" style="flex:1" readonly></textarea>
+            <div v-if="viewtype=='readme'" style="flex:1;overflow: auto;" v-html="readme"></div>
+            <div v-if="viewtype=='netchart'" style="flex:1" ref="netchart">
+                
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.0.2/vue.global.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/marked/1.2.2/marked.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/d3/6.2.0/d3.min.js"></script>
+    <script>
+        var obj = {
+            data() {
+                return {
+                    registry:"https://registry.npm.taobao.org",
+                    searchname:"vue",
+                    npmdata:null,
+                    version:null,
+                    latest:null,
+                    viewtype:"readme" // readme netchart
+                }
+            },
+            computed:{
+                npmdatastr(){
+                    return JSON.stringify(this.npmdata,null,2)
+                },
+                html(){
+                    if(!this.npmdata){return ""}
+                    return data2html(this.npmdata)
+                },
+                currentVersion(){
+                    return this.version && this.npmdata.versions[this.version] || null;
+                },
+                versions(){
+                    return this.npmdata && this.npmdata.versions && Object.keys(this.npmdata.versions) || []
+                },
+                dependencies(){
+                    return this.currentVersion && this.currentVersion.dependencies && Object.keys(this.currentVersion.dependencies)||[]
+                },
+                devDependencies(){
+                    return this.currentVersion && this.currentVersion.devDependencies && Object.keys(this.currentVersion.devDependencies)||[]
+                },
+                readme(){
+                    return this.npmdata && this.npmdata.readme && marked(this.npmdata.readme) || ""
+                }
+            },
+            watch:{
+                viewtype:function(newv,oldv){
+                    if(newv=="netchart" && newv!=oldv){
+                        this.showNetchart();
+                    }
+                }
+            },
+            mounted(){
+                this.searchname = getHash()||this.searchname;// || "express";
+                this.updatenpmdata();
+                window.addEventListener("popstate",()=>{
+                    var name =getHash();
+                    if(name!=this.searchname){
+                        this.searchname = name;
+                        this.updatenpmdata();
+                    }
+                });
+            },
+            methods:{
+                showNetchart:function(){
+                    this.$nextTick(()=>{
+                        var deps = (this.dependencies||[]).map(item=>({
+                            id:item,group:"2"
+                        }))
+                        var devDeps = (this.devDependencies||[]).map(item=>({
+                            id:item,group:"3"
+                        }))
+                        
+                        var ele = chart({
+                            nodes:[
+                                {"id":this.npmdata.name,"group":1},
+                                ...deps,
+                                ...devDeps
+                            ],
+                            links:[...deps,...devDeps].map(item=>({
+                                "source":this.npmdata.name,"target":item.id,"value":1
+                            }))
+                        });
+                        this.$refs.netchart.append(ele);
+                    })
+                },
+                updatenpmdata:function(){
+                    if(!this.searchname){return Promise.resolve(null);}
+                    return getJSON(this.registry+"/"+this.searchname)
+                    .then(data=>{
+                        if(data.error){
+                            throw this.searchname+"不存在";
+                            return;
+                        }
+                        this.npmdata=data;
+                        this.version = data["dist-tags"].latest;
+                        this.latest = data["dist-tags"].latest;
+                    }).then(()=>{
+                        if(this.viewtype=="netchart"){
+                            this.showNetchart();
+                        }
+                    })
+                    .catch(error=>{
+                        alert(error)
+                        console.log(error)
+                    })
+                }
+            }
+        };
+
+        var cache = {};
+        window.onload=function(){
+            Vue.createApp(obj).mount('#app')
+        }
+        function color(){
+            const scale = d3.scaleOrdinal(d3.schemeCategory10);
+            return d => scale(d.group);
+        }
+        function getHash(){
+            return window.location.hash.slice(1)
+        }
+        function getJSON(giturl){
+            return cache[giturl]&&Promise.resolve(cache[giturl])||window.fetch(giturl)
+            .then(d=>d.json())
+            .then(d=>(cache[giturl]=d,d))
+        }
+        function data2html(data){
+            var d = data;
+            var versions = Object.keys(d.versions)
+            .map(item=>item+(item==d["dist-tags"].latest?"(当前版本)":""))
+            .map(item=>`* [${item}](sss)`).join("\n");
+            var vd = d.versions[d["dist-tags"].latest] 
+            var dependencies = vd.dependencies?Object.keys(vd.dependencies)
+            .map(item=> "* "+item).join("\n"):[];
+            var devDependencies = vd.devDependencies?Object.keys(vd.devDependencies)
+            .map(item=> "* "+item).join("\n"):[];
+            
+            return marked(`# marked`)
+        };
+
+
+        function chart (data){
+            data = data || mockdata();
+            var height = 600;
+            var width = 600;
+            const links = data.links.map(d => Object.create(d));
+            const nodes = data.nodes.map(d => Object.create(d));
+
+            const simulation = d3.forceSimulation(nodes)
+                .force("link", d3.forceLink(links).id(d => d.id))
+                .force("charge", d3.forceManyBody())
+                .force("center", d3.forceCenter(width / 2, height / 2));
+
+            const svg = d3.create("svg")
+                .attr("viewBox", [0, 0, width, height])
+                .style("width","100%")
+                .style("height","100%");
+
+            const link = svg.append("g")
+                .attr("stroke", "#999")
+                .attr("stroke-opacity", 0.6)
+                .selectAll("line")
+                .data(links)
+                .join("line")
+                .attr("stroke-width", d => Math.sqrt(d.value));
+
+            const node = svg.append("g")
+                .attr("stroke", "#f00")
+                .attr("stroke-width", 2)
+                .selectAll("circle")
+                .data(nodes)
+                .join("circle")
+                .attr("r", 5)
+                .attr("fill", color())
+                .call(drag(simulation));
+
+            node.append("title")
+                .text(d => d.id);
+            
+            
+            simulation.on("tick", () => {
+                link
+                    .attr("x1", d => d.source.x)
+                    .attr("y1", d => d.source.y)
+                    .attr("x2", d => d.target.x)
+                    .attr("y2", d => d.target.y);
+                node
+                    .attr("cx", d => d.x)
+                    .attr("cy", d => d.y);
+            });
+
+            //invalidation.then(() => simulation.stop());
+
+            return svg.node();
+        }
+
+        function drag(simulation){
+  
+            function dragstarted(event, d) {
+                if (!event.active) simulation.alphaTarget(0.3).restart();
+                d.fx = d.x;
+                d.fy = d.y;
+            }
+            
+            function dragged(event, d) {
+                d.fx = event.x;
+                d.fy = event.y;
+            }
+            
+            function dragended(event, d) {
+                if (!event.active) simulation.alphaTarget(0);
+                d.fx = null;
+                d.fy = null;
+            }
+            
+            return d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended);
+        }
+
+
+        function mockdata(){
+            return {
+                "nodes":[
+                    {"id":"Myriel","group":1},
+                    {"id":"Napoleon","group":1},
+                    {"id":"Mlle.Baptistine","group":2},
+                    {"id":"Mme.Magloire","group":2},
+                    {"id":"CountessdeLo","group":3}
+                ],
+                "links":[
+                    {"source":"Myriel","target":"Napoleon","value":20},
+                    {"source":"Myriel","target":"CountessdeLo","value":8}
+                ]
+            }
+        }
+    </script>
+</body>
+</html>

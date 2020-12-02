@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8" />
+  <title>Esprima: Editing Autocomplete</title>
+  <meta name="viewport" content="width=device-width" />
+  <link rel="stylesheet" type="text/css" href="assets/style.css"/>
+  <link rel="stylesheet" href="assets/foundation.min.css">
+</head>
+
+<body>
+
+  <!-- Navigation bar -->
+  <div class="row">
+    <div class="twelve columns">
+      <nav class="top-bar">
+        <ul>
+          <li class="name">
+             <h1><a href="../index.html">Esprima</a></h1>
+          </li>
+        </ul>
+        <section>
+          <ul class="right">
+            <li class="divider show-for-medium-and-up"></li>
+            <li class="has-dropdown">
+              <a href="index.html">Demo</a>
+              <ul class="dropdown">
+                <li><label>Static Analysis</label></li>
+                <li><a href="parse.html">Online Parsing</a></li>
+                <li><a href="validate.html">Syntax Validator</a></li>
+                <li><a href="precedence.html">Operator Precedence</a></li>
+                <li><a href="collector.html">Regex Collector</a></li>
+                <li><label>Dynamic Tracing</label></li>
+                <li><a href="functiontrace.html">Function Instrumentation</a></li>
+                <li><label>Code Transformation</label></li>
+                <li><a href="rewrite.html">Source Rewrite</a></li>
+                <li><a href="minify.html">Minifiy &amp; Obfuscate</a></li>
+                <li><label>Editing Tools</label></li>
+                <li><a href="highlight.html">Identifier Highlight</a></li>
+                <li><a href="rename.html">Rename Refactoring</a></li>
+                <li><a href="autocomplete.html">Autocomplete</a></li>
+              </ul>
+            </li>
+            <li class="has-dropdown">
+              <a href="#">Project</a>
+              <ul class="dropdown">
+                <li><a href="http://github.com/jquery/esprima">Git Repository</a></li>
+                <li><a href="../test/ci.html">Continuous Integration</a></li>
+                <li><a href="http://groups.google.com/group/esprima">Mailing List</a></li>
+                <li><a href="https://github.com/jquery/esprima/issues">Issue Tracker</a></li>
+                <li class="divider"></li>
+                <li><label>QA</label></li>
+                <li><a href="../test/index.html">Unit Tests</a></li>
+                <li><a href="../test/benchmarks.html">Benchmarks Suite</a></li>
+                <li><a href="../test/compare.html">Speed Comparison</a></li>
+                <li><a href="../test/module.html">Module Loading</a></li>
+                <li><a href="https://codecov.io/github/jquery/esprima">Coverage Analysis</a></li>
+              </ul>
+            </li>
+            <li class="has-dropdown">
+              <a href="../doc/index.html">Documentation</a>
+              <ul class="dropdown">
+                <li><a href="../doc/index.html">Usage</a></li>
+                <li><a href="../doc/videos.html">Videos</a></li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Title and subtitle -->
+  <div class="row">
+    <div class="twelve columns">
+       <h3 class="subheader"><strong>Autocomplete</strong> makes coding tasks fun again</h3>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <div class="row">
+    <div class="eight columns">
+      <div class="editor" id="editor"></div>
+
+<pre id="init" spellcheck="false" style="display: none">// Object declaration
+var capitalDb = {
+    Indonesia: 'Jakarta',
+    Germany: 'Berlin',
+    Norway: 'Oslo'
+};
+
+// Press dot (.) after "capitalDb" to show autocompletion
+capitalDb
+
+
+// Function declaration
+function greatestCommonDivisor(a, b) {
+    return (b === 0) ? a : gcd(b, a % b);
+}
+
+// Press Ctrl+Space after "great" to show autocompletion
+great
+</pre>
+    <div id="info" class="alert-box success">No result yet.</div>
+    </div>
+
+    <div class="four columns">
+      <div class="panel">
+        <p>Autocompletion is done by analyzing the code and suggesting the likely candidates.</p>
+        <p>It is implemented using <a href="https://github.com/espadrine/aulx">Aulx</a>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="row copyright">
+    <div class="six columns">
+      <p>Esprima is created and maintained by <a href="http://ariya.io">Ariya Hidayat</a>.</p>
+    </div>
+    <div class="six columns">
+      <ul class="link-list right">
+        <li><a href="https://github.com/jquery/esprima">GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+
+<script src="assets/esprima.js"></script>
+<script src="assets/aulx.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/monaco-editor/0.21.2/min/vs/loader.min.js"></script>
+<script src="assets/components.js"></script>
+<script>
+Demo.autoCompleter()
+</script>
+
+</body>
+</html>
