@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <title>Html Lexer example page</title>
   <script src="../dist/html-lexer.js"></script>
+  <script src="./he.js"></script>
+  <script src="./html2jade.js"></script>
 </head>
 <body>
 
@@ -11,13 +13,18 @@
   const { Lexer } = modules ['html-lexer']
 
   function main () {
-    let tokes = getTokens(`
+    var code = `
     <html>
       <body option="{platform:'vue'}">
         hello  
       </body>
     </html>
-    `);
+    `;
+    let tokes = getTokens(code);
+    Html2Jade.convertHtml(code, {}, function (err, jade) {
+      console.log(jade);
+    });
+    //console.log(Html2Jade(code))
     //let ast = analysis(tokes);
   }
 
@@ -49,70 +56,6 @@
     return tokens;
   }
 
-  // 分析tokens 返回语法树
-  function analysis(tokens) {
-    let index = 0; // 当前处理到token的位置
-    const length = tokens.length; // tokens数组长度
-    let TREE = { type: 'Program', body: [], sourceType: 'html' }; //语法树
-    let CURRENT_STATUS = '';
-    let CURRENT_NODE = {};
-    while (index < length) {
-      const TOKEN = tokens[index];
-      // console.log(length, index, TOKEN);
-      CURRENT_STATUS = '';
-      CURRENT_NODE = {};
-      debugger;
-      switch (getSyntaxKindFn(TOKEN.value)) {
-        case 'VariableDeclaration':
-          if (['const'].indexOf(TOKEN.value) >= 0) {
-            let NODE = {
-              type: 'VariableDeclaration',
-              declarations: [],
-              kind: 'const'
-            };
-            let ID = {};
-            let INIT = {};
-  
-            if (tokens[index + 1].type === 'Identifier') {
-              ID = { type: 'Identifier', name: tokens[index + 1].value };
-              index++;
-            }
-  
-            if (tokens[index + 1].type !== 'Punctuator') {
-              throw new Error('var 语法错误');
-              return;
-            } else {
-              index++;
-            }
-            if (tokens[index + 1].type === 'String') {
-              INIT = {
-                type: 'Literal',
-                value: tokens[index + 1].value,
-                raw: tokens[index + 1].value
-              };
-              index++;
-            } else {
-              throw new Error('var 语法错误');
-              return;
-            }
-            NODE.declarations.push({
-              type: 'VariableDeclarator',
-              id: ID,
-              init: INIT
-            });
-            CURRENT_NODE = NODE;
-            index++;
-          }
-          TREE.body.push(CURRENT_NODE);
-          break;
-        default:
-          console.log('不识别的语法');
-          index++;
-          break;
-      }
-    }
-    return TREE;
-  }
 </script>
 <script>main()</script>
 </body>

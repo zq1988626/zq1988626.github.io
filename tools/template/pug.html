@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>pug/jade html 互转工具</title>
     <style>
         html{
             height: 100%;
@@ -18,9 +18,14 @@
 <body>
     <div id="app" style="display: flex;flex-direction: column; width: 100%;height: 100%;">
         <div style="margin-bottom:0.5rem;">
-            PUG
-            =&gt;
+            pug/jade
+            &lt;=&gt;
             HTML
+            
+            <span style="float:right;">
+                <span id="msg"></span>
+                编辑后自动转换
+            </span>
         </div>
         <div style="display: flex;flex:1;align-items:stretch;height: 0;">
             <textarea id="pug" style="flex:1;margin-right:0.5rem;"></textarea>
@@ -29,12 +34,16 @@
     </div>
     <script src="../../js/pug.js"></script>
     <script src="../../js/utils.js"></script>
+    <script src="./he.js"></script>
+    <script src="./html2jade.js"></script>
+
     <script>
         var elePub = document.getElementById("pug");
         var eleHtml= document.getElementById("html");
-
-        elePub.addEventListener("keydown",function(){tab(this);})
-        eleHtml.addEventListener("keydown",function(){tab(this);})
+        var eleMsg= document.getElementById("msg");
+        
+        elePub.addEventListener("keydown",function(){tab(this,event);})
+        eleHtml.addEventListener("keydown",function(){tab(this,event);})
 
         
         var pug = require("pug");
@@ -44,14 +53,21 @@
             elePub.addEventListener("keyup",zUtils.debounce(function(){
                 btn_p2h_click();
             }))
+            eleHtml.addEventListener("keyup",zUtils.debounce(function(){
+                btn_h2p_click();
+            }))
         }
         var defaultCode = `html
-head
-  meta(charset="utf-8")
-  title test
-body`
+  head
+    meta(charset="utf-8")
+    title test
+  body`   
+        
+        function btn_h2p_click(){
+            html2pug(getHtmlCode()).then(setPugCode)
+        }
         function btn_p2h_click(){
-            setHtmlCode(pug2html(getPugCode()))
+            pug2html(getPugCode()).then(setHtmlCode)
         }
 
         function getPugCode(){
@@ -63,29 +79,83 @@ body`
         function setHtmlCode(value){
             eleHtml.value=value;
         }
+        function getHtmlCode(){
+            return eleHtml.value;
+        }
+        function html2pug(code){
+            return new Promise(function(resolve,reject){
+                Html2Jade.convertHtml(code, {}, function (err, jade) {
+                    if(err){reject(err)}
+                    else{
+                        resolve(jade);
+                    }
+                });
+            })
+        }
         function pug2html(p){
-            return pug.render(p)
+            return Promise.resolve(pug.render(p))
         }
         function tab(obj){
             if (event.keyCode == 9)
             {
-                addExpressContent(obj,"  ")
+                if(event.shiftKey){
+                    delTab(obj)
+                }else{
+                    addExpressContent(obj,"  ")
+                }
                 event.returnValue = false;
             }
         }
-        function addExpressContent(textarea,str){
-            var obj = textarea;
+        function showMsg(s){
+            eleMsg.innerHTML=s;
+        }
+        
+        function delTab(obj){  
+            var tablen = 2;
+            var startPos = obj.selectionStart;  
+            var endPos = obj.selectionEnd;
+            var tmpStr = obj.value;
+            var index = startPos;
+            while(index>=0&&tmpStr[index]!=="\n"){
+                index--;
+            }
+            index++;
+            var s = tmpStr.substring(0, index);
+            var c = tmpStr.substring(index,index+tablen);
+            var e = tmpStr.substring(index+2,tmpStr.length);
+            var nc = c.trim();
+            var dellen = c.length - nc.length;
+            obj.value = s + nc + e;
+            obj.selectionStart = startPos-dellen; 
+            obj.selectionEnd = endPos-dellen; 
+        }
+
+        
+
+        // 向输入框中光标位置插入
+        function addExpressContent(obj,str){
             if (document.selection) {  
                 var sel = document.selection.createRange();  
-                sel.text = str;  
+                sel.text = sel.text+str;  
             } else if (typeof obj.selectionStart === 'number' && typeof obj.selectionEnd === 'number') {  
                 var startPos = obj.selectionStart;  
                 var    endPos = obj.selectionEnd;  
                 var    cursorPos = startPos;  
                 var    tmpStr = obj.value;  
-                obj.value = tmpStr.substring(0, startPos) + str + tmpStr.substring(endPos, tmpStr.length);  
-                cursorPos += str.length;  
-                obj.selectionStart = obj.selectionEnd = cursorPos;  
+                if(startPos==endPos){
+                    obj.value = tmpStr.substring(0, startPos) + str + tmpStr.substring(endPos, tmpStr.length);  
+                    cursorPos += str.length;  
+                    obj.selectionStart = obj.selectionEnd = cursorPos;  
+                }else{
+                    var index = startPos;
+                    while(index>=0&&tmpStr[index]!=="\n"){
+                        index--;
+                    }
+                    index++;
+                    obj.value = tmpStr.substring(0, index) + str + tmpStr.substring(index, tmpStr.length); 
+                    obj.selectionStart = startPos+str.length; 
+                    obj.selectionEnd = endPos+str.length; 
+                }
             } else {  
                 obj.value += str;  
             }  

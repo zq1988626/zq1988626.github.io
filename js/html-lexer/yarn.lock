@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@babel/parser@^7.12.7":
+  version "7.12.7"
+  resolved "https://registry.npm.taobao.org/@babel/parser/download/@babel/parser-7.12.7.tgz?cache=0&sync_timestamp=1605906390839&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Fparser%2Fdownload%2F%40babel%2Fparser-7.12.7.tgz#fee7b39fe809d0e73e5b25eecaf5780ef3d73056"
+  integrity sha1-/uezn+gJ0Oc+WyXuyvV4DvPXMFY=
+
 JSONStream@^1.0.3:
   version "1.3.5"
   resolved "https://registry.npm.taobao.org/JSONStream/download/JSONStream-1.3.5.tgz#3208c1f08d3a4d99261ab64f92302bc15e111ca0"
