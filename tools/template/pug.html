@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html{
+            height: 100%;
+            display: flex;
+        }
+        body{
+            flex:1;
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" style="display: flex;flex-direction: column; width: 100%;height: 100%;">
+        <div style="margin-bottom:0.5rem;">
+            PUG
+            =&gt;
+            HTML
+        </div>
+        <div style="display: flex;flex:1;align-items:stretch;height: 0;">
+            <textarea id="pug" style="flex:1;margin-right:0.5rem;"></textarea>
+            <textarea id="html" style="flex:1"></textarea>
+        </div>
+    </div>
+    <script src="../../js/pug.js"></script>
+    <script src="../../js/utils.js"></script>
+    <script>
+        var elePub = document.getElementById("pug");
+        var eleHtml= document.getElementById("html");
+
+        elePub.addEventListener("keydown",function(){tab(this);})
+        eleHtml.addEventListener("keydown",function(){tab(this);})
+
+        
+        var pug = require("pug");
+        window.onload=function(){
+            setPugCode(defaultCode);
+            btn_p2h_click();
+            elePub.addEventListener("keyup",zUtils.debounce(function(){
+                btn_p2h_click();
+            }))
+        }
+        var defaultCode = `html
+head
+  meta(charset="utf-8")
+  title test
+body`
+        function btn_p2h_click(){
+            setHtmlCode(pug2html(getPugCode()))
+        }
+
+        function getPugCode(){
+            return elePub.value;
+        }
+        function setPugCode(value){
+            elePub.value=value;
+        }
+        function setHtmlCode(value){
+            eleHtml.value=value;
+        }
+        function pug2html(p){
+            return pug.render(p)
+        }
+        function tab(obj){
+            if (event.keyCode == 9)
+            {
+                addExpressContent(obj,"  ")
+                event.returnValue = false;
+            }
+        }
+        function addExpressContent(textarea,str){
+            var obj = textarea;
+            if (document.selection) {  
+                var sel = document.selection.createRange();  
+                sel.text = str;  
+            } else if (typeof obj.selectionStart === 'number' && typeof obj.selectionEnd === 'number') {  
+                var startPos = obj.selectionStart;  
+                var    endPos = obj.selectionEnd;  
+                var    cursorPos = startPos;  
+                var    tmpStr = obj.value;  
+                obj.value = tmpStr.substring(0, startPos) + str + tmpStr.substring(endPos, tmpStr.length);  
+                cursorPos += str.length;  
+                obj.selectionStart = obj.selectionEnd = cursorPos;  
+            } else {  
+                obj.value += str;  
+            }  
+        }
+    </script>
+</body>
+</html>
