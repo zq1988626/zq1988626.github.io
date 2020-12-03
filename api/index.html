@@ -54,6 +54,10 @@
       // facebook-like distraction free mode
       distractionFreeMode: false
     })
+
+    window.addEventListener("popstate",()=>{
+      gitalk.options.id = window.location.href;
+    });
   </script>
 </body>
 </html>
