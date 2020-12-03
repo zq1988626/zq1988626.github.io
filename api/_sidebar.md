@@ -3,6 +3,6 @@
 
 * [docker](docker/)
 * [ssl](ssl/)
-* [lib](tool/ramda)
+* [lib](lib/)
 
 
