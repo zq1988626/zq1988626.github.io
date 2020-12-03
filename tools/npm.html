@@ -26,6 +26,7 @@
                 <label>{{registry}}/</label>
                 <input v-model="searchname" @keyup.enter="updatenpmdata" />
                 <button @click="updatenpmdata">请求</button>
+                <a href="https://www.npmtrends.com/">npmtrends:NPM包趋势对比分析</a>
             </div>
             <div style="flex:1;text-align:right">
                 <label><input v-model="viewtype" name="viewType" type="radio" value="json" />JSON</label>
