@@ -14,22 +14,24 @@
     </style>
   </head>
   <body>
+      <div>
+          
+      </div>
     <mip-tabs initial-tab="0" id="tabs">
-        <mip-tabs-item label="在线生成">
+        <mip-tabs-item label="本站在线工具">
             <ol>
                 <mip-list>
                     <script type="application/json">
-                    {
-                        "items": [
-                            {"name": "印章","url":"tools/yinzhang.html"}, 
-                            {"name": "SVG","url":"tools/svg.html"}, 
-                            {"name": "HTML编辑器","url":"tools/editor/editor.html"}, 
-                            {"name": "CDN","url":"tools/bootcdn.html"}, 
-                            {"name": "JS 代码分析","url":"tools/ast/index.html"}, 
-                            {"name": "npm包查询工具","url":"tools/npm.html"}, 
-                            {"name": "pug/jade与html互转工具","url":"tools/template/pug.html"}
-                        ]
-                    }
+                    {"items": [
+                        {"name": "印章","url":"tools/yinzhang.html"}, 
+                        {"name": "SVG","url":"tools/svg.html"}, 
+                        {"name": "HTML编辑器","url":"tools/editor/editor.html"}, 
+                        {"name": "CDN","url":"tools/bootcdn.html"}, 
+                        {"name": "JS 代码分析","url":"tools/ast/index.html"}, 
+                        {"name": "npm包查询工具","url":"tools/npm.html"}, 
+                        {"name": "pug/jade与html互转工具","url":"tools/template/pug"}, 
+                        {"name": "table合并单元格","url":"tools/table/index.html"}
+                    ]}
                     </script>
                     <template type="mip-mustache">
                         <li><mip-link title="{{name}}" href="{{url}}">{{name}}</mip-link></li>
@@ -37,34 +39,50 @@
                 </mip-list>
             </ol>
         </mip-tabs-item>
-        <mip-tabs-item label="第三方工具">
+        <mip-tabs-item label="第三方">
+            平台：
             <ol>
-                <li>在线流程图:<br />
-                    <a data-type="mip" data-title="drawio clone" href="https://cnxzq.github.io/drawio-simple/.">克隆版</a><br />
-                    <a data-type="mip" data-title="在线流程图" href="https://www.draw.io/">官方正版[https://www.draw.io/]</a><br />
-                </li>
-                <li>文本背景色调节:<br />
-                    <a data-type="mip" data-title="在线流程图" href="https://contrast-checker.glitch.me/">contrast-checker</a>
-                </li>
-                <li><a data-type="mip" data-title="NASA 实时地球数据" href="https://worldview.earthdata.nasa.gov">实时地球数据-NASA worldview</a></li>
-            </li>
+                <mip-list>
+                    <script type="application/json">
+                    {"items": [
+                        {"name": "observablehq","url":"https://observablehq.com/"}, 
+                        {"name": "github","url":"https://github.com/"}, 
+                        {"name": "glitch","url":"https://glitch.com/"}, 
+                        {"name": "mapbox","url":"https://www.mapbox.com/"}, 
+                    ]}
+                    </script>
+                    <template type="mip-mustache">
+                        <li><mip-link title="{{name}}" href="{{url}}">{{name}}</mip-link></li>
+                    </template>
+                </mip-list>
+            </ol>
+            工具：
+            <ol>
+                <mip-list>
+                    <script type="application/json">
+                    {"items": [
+                        {"name": "在线流程图：drawio","url":"https://www.draw.io/"}, 
+                        {"name": "在线流程图：drawio-本地克隆","url":"https://cnxzq.github.io/drawio-simple/"}, 
+                        {"name": "文本背景色调节:contrast-checker","url":"https://contrast-checker.glitch.me/"}, 
+                        {"name": "实时地球数据-NASA worldview","url":"https://worldview.earthdata.nasa.gov"}
+                    ]}
+                    </script>
+                    <template type="mip-mustache">
+                        <li><mip-link title="{{name}}" href="{{url}}">{{name}}</mip-link></li>
+                    </template>
+                </mip-list>
             </ol>
         </mip-tabs-item>
-        <mip-tabs-item label="开发工具">
+        <mip-tabs-item label="筛选工具">
             <ol>
-                <li>
-                    <a data-type="bootcdn" data-title="bootcdn" href="tools/bootcdn.html">bootcdn</a>
-                </li>
-                <li>
-                    <a href="https://www.npmtrends.com/">npmtrends:NPM包趋势对比分析</a>
-                </li>
+                <li><a data-type="bootcdn" data-title="bootcdn" href="tools/bootcdn.html">bootcdn</a></li>
+                <li> <a href="https://www.npmtrends.com/">npmtrends:NPM包趋势对比分析</a></li>
             </ol>
         </mip-tabs-item>
-        <mip-tabs-item label="示例代码">
+        <mip-tabs-item label="libs">
             <ol>
-                <li>
-                    <a data-type="monaco" data-title="bootcdn" href="doc/monaco/editor.html">monaco</a>
-                </li>
+                <li><a href="demo/monaco/editor.html">代码编辑-monaco</a></li>
+                <li><a href="https://vega.github.io/">Vega –可视化语法</a></li>
             </ol>
         </mip-tabs-item>
         <mip-tabs-item label="文档">
@@ -73,8 +91,8 @@
                     <script type="application/json">
                     {
                         "items": [
-                            {"name": "Ramda","url":"doc/ramdaDoc/ramda.html"}, 
-                            {"name": "CSS flexbox","url":"doc/css3/flexbox.html"}
+                            {"name": "Ramda","url":"demo/ramdaDoc/ramda.html"}, 
+                            {"name": "CSS flexbox","url":"demo/css3/flexbox.html"}
                         ]
                     }
                     </script>

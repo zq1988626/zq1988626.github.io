@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>示例</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@3/dist/inspector.css">
+  </head>
+  <body>
+    <h1>@observablehq/runtime@4 测试</h1>
+    <button id="btnTest">仅使用笔记部分内容</button>
+    <button id="btnAll">显示全部笔记</button>
+    <button id="btnReplace">替换掉容器元素，并加载笔记全部内容</button>
+    
+    <div id="container"></div>
+
+    <script type="module">
+        import {Runtime,Inspector,Library} from "/js/runtime/runtime.js";
+        
+        function notebook (runtime, observer){
+            const main = runtime.module();
+            main.variable(observer()).define(["md"], function(md){return(
+                md`# EChart Demo
+                option 来源于 [echarts.apache.org](https://echarts.apache.org/next/examples/zh/editor.html?c=pie-simple)`
+            )});
+            main.variable(observer()).define(["md"], function(md){return(
+                md`## 引入EChart`
+            )});
+            main.variable(observer("echarts")).define("echarts", ["require"], function(require){return(
+                require('https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js')
+            )});
+            main.variable(observer("main")).define("main", ["html"], function(html){return(
+                html`<div style="height:400px;width:600px;"></div>`
+            )});
+            main.variable(observer("option")).define("option", function(){return(
+                {
+                    title: {
+                        text: '某站点用户访问来源',
+                        subtext: '纯属虚构',
+                        left: 'center'
+                    },
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: '{a} <br/>{b} : {c} ({d}%)'
+                    },
+                    legend: {
+                        orient: 'vertical',
+                        left: 'left',
+                    },
+                    series: [
+                        {
+                        name: '访问来源',
+                        type: 'pie',
+                        radius: '50%',
+                        data: [
+                            {value: 1048, name: '搜索引擎'},
+                            {value: 735, name: '直接访问'},
+                            {value: 580, name: '邮件营销'},
+                            {value: 484, name: '联盟广告'},
+                            {value: 300, name: '视频广告'}
+                        ],
+                        emphasis: {
+                            itemStyle: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
+                        }
+                        }
+                    ]
+                }
+            )});
+
+            main.variable(observer()).define([
+                "echarts","main","option","md"
+            ], function(echarts,main,option,md){return(
+                echarts.init(main).setOption(option),md`## 初始化`
+            )});
+            return main;
+        }
+        
+        const viewbox = document.getElementById("container");
+
+        btnTest.addEventListener("click",function(){
+            //渲染 指定 notebook 块到指定容器
+            viewbox.innerHTML = "";
+            const runtime = new Runtime();
+            let main = runtime.module(notebook);
+            main.variable(new Inspector(viewbox))
+            .define(["main","option","echarts"],function(box,option,echarts){
+                var ec = echarts.init(box);
+                ec.setOption(option);
+                return ec.getDom()
+            })
+        })
+
+        btnAll.addEventListener("click",function(){
+            //渲染 指定 notebook 块到指定容器
+            viewbox.innerHTML = "";
+            const runtime = new Runtime();
+            const main = runtime.module(notebook, Inspector.into(viewbox));
+        })
+
+        btnReplace.addEventListener("click",function(){
+            viewbox.innerHTML = "";
+            const renders = {
+                "main": "#container"
+            };
+            function render(_node, value) {
+                if (!(value instanceof Element)) {
+                const el = document.createElement("span");
+                el.innerHTML = value;
+                value = el;
+                }
+                if (_node.firstChild !== value) {
+                if (_node.firstChild) {
+                    while (_node.lastChild !== _node.firstChild) _node.removeChild(_node.lastChild);
+                    _node.replaceChild(value, _node.firstChild);
+                } else {
+                    _node.appendChild(value);
+                }
+                }
+            }
+            const runtime = new Runtime();
+            const main = runtime.module(notebook, name => {
+                const selector = renders[name];
+                if (selector) {
+                    return {fulfilled: (value) => render(document.querySelector(selector), value)}
+                } else {
+                    return true;
+                }
+            });
+        })
+    </script>
+  </body>
+</html>

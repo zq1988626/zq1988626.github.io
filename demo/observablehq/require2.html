@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div id="foo"></div>
+<script type=module>
+    import {Runtime, Inspector, Library} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+    const runtime = new Runtime(new Library);
+
+    runtime.module()
+    .variable(new Inspector(document.querySelector("#foo")))
+    .define(["require"],
+        require => import("https://api.observablehq.com/@jashkenas/inputs.js?v=3")
+            .then(inputs=>runtime.module(inputs.default))
+            .then(inputs=>inputs.value("color"))
+            .then(color=>color())
+    );
+</script>
+</body>
+</html>

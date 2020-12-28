@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<body class="">
+    <textarea id="code" style="width:100%;height:200px;"></textarea>
+    <div id="foo"></div>
+    <script type=module>
+
+    import {Runtime, Inspector, Library} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+
+    const runtime = new Runtime(new Library);
+    const module = runtime.module();
+        
+    module.variable().define("parser",["require"], require => require("@observablehq/parser"));
+    
+    let code = document.querySelector("#code");
+    let codestr = `hello = "world"`
+    code.value = codestr;
+    code.addEventListener("keyup",function(){
+        //module.variable().define("code",code.value);
+    })
+
+    let codeset = module.variable().define("code",function(){
+        return code.value
+    });
+
+    module.variable(new Inspector(document.querySelector("#foo")))
+    .define(["parser",'html',"code"],(parser,html,code)=>{
+        let {parseCell} = parser;
+        const cell = parseCell(code);
+        return html`<textarea style="width:100%;height:400px;">${JSON.stringify(cell,null,4)}</textarea>`
+    })
+
+
+    </script>
+</body>
+</html>

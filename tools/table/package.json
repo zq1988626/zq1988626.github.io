@@ -1,0 +1,14 @@
+{
+  "name": "@zq1988626/merge-table-cell",
+  "main": "05cec6bcfd3bae35@491.js",
+  "version": "491.0.0",
+  "homepage": "https://observablehq.com/@zq1988626/merge-table-cell",
+  "author": {
+    "name": "zq",
+    "url": "https://observablehq.com/@zq1988626"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4"
+  }
+}

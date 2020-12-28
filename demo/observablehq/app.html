@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>示例</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@3/dist/inspector.css">
+  </head>
+  <body>
+    <h1>@observablehq/runtime@4 测试</h1>
+    <a href="https://observablehq.com/d/513d78d5fec0b5df">示例笔记(私人笔记)</a><br/>
+    <button id="btnTest">显示笔记内容test</button>
+    <button id="btnAll">显示全部笔记</button>
+    <button id="btnRunTest">执行定义的test方法</button>
+    <button id="btnRunLibrary">动态引入LIB</button>
+    <button id="btnRunTimeTest1">运行时Test1</button>
+    <button id="btnRunTimeTest2">运行时Test2</button>
+
+    
+    <div id="container"></div>
+    <script type="module">
+      import {Runtime,Inspector,Library} from "https://unpkg.com/@observablehq/runtime@4/dist/runtime.js";
+      import notebook from "https://api.observablehq.com/d/513d78d5fec0b5df.js?v=3&api_key=74c9c3f79af02e6d28a763d140a725ea2c49f789";
+      
+      
+
+      const renders = {
+        "test": function(fn){
+          fn();
+        }
+      };
+      const viewbox = document.getElementById("container");
+      
+      btnTest.addEventListener("click",function(){
+        //渲染 指定 notebook 块到指定容器
+        viewbox.innerHTML = "";
+        const runtime = new Runtime();
+        const main = runtime.module(notebook, name => {
+          if (name === "test") {
+            return new Inspector(viewbox);
+          }
+        });
+      })
+      btnAll.addEventListener("click",function(){
+        //渲染 指定 notebook 块到指定容器
+        viewbox.innerHTML = "";
+        const runtime = new Runtime();
+        const main = runtime.module(notebook, Inspector.into(viewbox));
+      })
+
+
+      // 运行笔记中定义的 test 方法
+      btnRunTest.addEventListener("click",function(){
+        const runtime = new Runtime();
+        const main = runtime.module(notebook,name=>name!=="test"||{fulfilled:value=>value()});
+      })
+      
+      // 使用 runtime 引入D3
+      btnRunLibrary.addEventListener("click",function(){
+        const runtime = new Runtime(new Library);
+        const module = runtime.module();
+        module.variable().define("d3", ["require"], require => require("d3-array"));
+        module.variable(new Inspector(document.querySelector("#container"))).define(["d3"], d3 => d3.range(100));
+      })
+      
+      // 使用 runtime 引入D3
+      btnRunTimeTest1.addEventListener("click",function(){
+        viewbox.innerHTML = "";
+        const runtime = new Runtime({color1: "red"});
+        const inspector = new Inspector(viewbox);
+        const module = runtime.module();
+        module.variable(inspector).define(["color1"], color => `Hello, ${color}.`);
+      })
+      // 使用 runtime 引入D3
+      btnRunTimeTest2.addEventListener("click",function(){
+        viewbox.innerHTML = "";
+        const runtime = new Runtime(Object.assign(new Library, {color2: "Every One"}));
+        const inspector = new Inspector(viewbox);
+        const module = runtime.module();
+        module.variable(inspector).define(["color2"], color => `Hello, ${color}.`);
+      })
+      const runtime = new Runtime();
+      const module0 = runtime.module();
+      module0.variable().define("a", 1);
+      module0.variable().define("b", 2);
+      module0.variable().define("c", ["a", "b"], (a, b) => a + b);
+      
+      const module1 = runtime.module();
+      const module1_0 = module0.derive(["b"], module1);
+      module1.variable().define("b", 3);
+      module1.variable().import("c", module1_0);
+      
+      module1_0.value("b").then(console.log)
+      module0.value("c").then(console.log)
+      module1_0.value("c").then(console.log)
+
+      
+      // 渲染整个 notebook 到 指定容器
+      //const main = runtime.module(notebook, Inspector.into(viewbox));
+      
+      // 渲染 指定 notebook 块到指定容器
+      /*
+      */
+
+      
+
+      /*
+      
+        const runtime = new Runtime();
+        runtime.module(notebook,name=>!renders[name]||{fulfilled:renders[name]});
+      */
+      function run(){
+        return new Promise((resolve,reject)=>{
+          let rev = [];
+          var log = runtime.module(notebook,name=>{fulfilled:value=>rev.push({name,value})});
+          console.log(log);
+          console.log(rev);
+          resolve(111);
+        })
+      }
+
+      //run();
+    </script>
+  </body>
+</html>

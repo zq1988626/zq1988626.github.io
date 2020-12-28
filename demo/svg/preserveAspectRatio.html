@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>svg-preserveAspectRatio</title>
+    <style>
+        html,body{padding:0;margin:0;height: 100%;overflow: hidden;}
+    </style>
+</head>
+<body>
+    <div id="app" style="height: 100%; display: flex;flex-direction: column;">
+        <div style="position: fixed; top:0;right:0;padding:4px; border:1px solid #aaa; background-color:#0001;z-index: 2;">
+            保持纵横比：
+            <select v-model="setPreserveAspectRatio">
+                <option v-for="item in bool" :value="item.value">{{item.text}}</option>
+            </select>
+            <select v-if="setPreserveAspectRatio" v-model="preserveAspectRatio[0]">
+                <option v-for="item in enumlist.preserveAspectRatio.align">{{item}}</option>
+            </select>
+            <select v-if="setPreserveAspectRatio" v-model="preserveAspectRatio[1]">
+                <option v-for="item in enumlist.preserveAspectRatio.meetOrSlice">{{item}}</option>
+            </select>
+        </div>
+        <svg class="flex-item" style="
+            border:1px solid #f00;height:0;overflow:hidden;
+            flex-grow: 1;" :view-box.camel="viewBox" :preserve-aspect-ratio.camel="setPreserveAspectRatio?preserveAspectRatio.join(' '):'none'" user-select="none"
+        >
+            <rect width=1240 height=830 stroke="#000" fill="#0002"></rect>
+            <circle r="100" cx=200 cy=200></circle>
+            <circle r="100" cx=400 cy=400></circle>
+        </svg>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.js"></script>
+    <script>
+        new Vue({
+            el:"#app",
+            data: function () {
+                return {
+                    bool:[
+                        {value:true,text:"是"},
+                        {value:false,text:"否"}
+                    ],
+                    viewBox:[0,0,1240,830],
+                    setPreserveAspectRatio:true,
+                    preserveAspectRatio:["xMidYMid","meet" ],
+                    enumlist:{
+
+                        preserveAspectRatio:{
+                            align:[
+                                "none",/*
+                                不会进行强制统一缩放，如果需要，会缩放指定元素的图形内容，使元素的边界完全匹配视图矩形。
+                                (注意：如果 <align> 的值是 none ，则 <meetOrSlice> 属性的值将会被忽略。)*/
+                                "xMinYMin",/* - 强制统一缩放。
+                                将SVG元素的viewbox属性的X的最小值与视图的X的最小值对齐。
+                                将SVG元素的viewbox属性的Y的最小值与视图的Y的最小值对齐。*/
+                                "xMidYMin",/* - 强制统一缩放。
+                                将SVG元素的viewbox属性的X的中点值与视图的X的中点值对齐。
+                                将SVG元素的viewbox属性的Y的最小值与视图的Y的最小值对齐。*/
+                                "xMaxYMin",/* - 强制统一缩放。
+                                将SVG元素的viewbox属性的X的最小值+元素的宽度与视图的X的最大值对齐。
+                                将SVG元素的viewbox属性的Y的最小值与视图的Y的最小值对齐。*/
+                                "xMinYMid",/* - 强制统一缩放。
+                                将SVG元素的viewbox属性的X的最小值与视图的X的最小值对齐。
+                                将SVG元素的viewbox属性的Y的中点值与视图的Y的中点值对齐。*/
+                                "xMidYMid",/* (默认值) - 强制统一缩放。
+                                将SVG元素的viewbox属性的X的中点值与视图的X的中点值对齐。
+                                将SVG元素的viewbox属性的Y的中点值与视图的Y的中点值对齐。*/
+                                "xMaxYMid",/* - 强制统一缩放。
+                                将SVG元素的viewbox属性的X的最小值+元素的宽度与视图的X的最大值对齐。
+                                将SVG元素的viewbox属性的Y的中点值与视图的Y的中点值对齐。*/
+                                "xMinYMax",/* - 强制统一缩放。
+                                将SVG元素的viewbox属性的X的最小值与视图的X的最小值对齐。
+                                将SVG元素的viewbox属性的Y的最小值+元素的高度与视图的Y的最大值对齐。*/
+                                "xMidYMax",/* - 强制统一缩放。
+                                将SVG元素的viewbox属性的X的中点值与视图的X的中点值对齐。
+                                将SVG元素的viewbox属性的Y的最小值+元素的高度与视图的Y的最大值对齐。*/
+                                "xMaxYMax",/* - 强制统一缩放。
+                                将SVG元素的viewbox属性的X的最小值+元素的宽度与视图的X的最大值对齐。
+                                将SVG元素的viewbox属性的Y的最小值+元素的高度与视图的Y的最大值对齐。*/
+                            ],
+                            meetOrSlice:[
+                                "meet",/* (默认值) - 图形将缩放到:
+                                宽高比将会被保留
+                                整个SVG的viewbox在视图范围内是可见的
+                                尽可能的放大SVG的viewbox，同时仍然满足其他的条件。
+                                在这种情况下，如果图形的宽高比和视图窗口不匹配，则某些视图将会超出viewbox范围（即SVG的viewbox视图将会比可视窗口小）。
+                                */
+                                "slice",/* - 图形将缩放到:
+                                宽高比将会被保留
+                                整个视图窗口将覆盖viewbox
+                                SVG的viewbox属性将会被尽可能的缩小，但是仍然符合其他标准。
+                                在这种情况下，如果SVG的viewbox宽高比与可视区域不匹配，则viewbox的某些区域将会延伸到视图窗口外部（即SVG的viewbox将会比可视窗口大）。
+                                */
+                            ]
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
