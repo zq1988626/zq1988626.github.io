@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pug/jade html 互转工具</title>
+    <style>
+        html{
+            height: 100%;
+            display: flex;
+        }
+        body{
+            flex:1;
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" style="display: flex;flex-direction: column; width: 100%;height: 100%;">
+        <div style="margin-bottom:0.5rem;">
+            Markdown
+            &lt;=&gt;
+            HTML
+            
+            <span style="float:right;">
+                <span id="msg"></span>
+                编辑后自动转换{{title}}
+            </span>
+        </div>
+        <div style="display: flex;flex:1;align-items:stretch;height: 0;">
+            <textarea @change="htmlInputChange" v-model="htmlInput" id="pug" style="flex:1;margin-right:0.5rem;"></textarea>
+            <textarea @change="mdInputChange" v-model="mdInput" style="flex:1"></textarea>
+        </div>
+    </div>
+    <script type="module">
+        import { createApp } from "https://cdn.jsdelivr.net/npm/vue@3.1.0-beta.6/dist/vue.esm-browser.prod.js";
+        import marked from "https://cdn.jsdelivr.net/npm/marked@2.0.6/lib/marked.esm.js";
+        import html from "./html2md.js";
+        createApp({
+            data(){
+                return {
+                    htmlInput:"<h1 id=\"标题\">标题</h1>\n<p>111</p>",
+                    mdInput:"# 标题\n111"
+                }
+            },
+            methods:{
+                mdInputChange(){
+                    this.htmlInput = marked.parse(this.mdInput);
+                },
+                htmlInputChange(){
+                    this.mdInput = html(this.htmlInput);
+                }
+            }
+        }).mount(document.getElementById("app"));
+    </script>
+</body>
+</html>

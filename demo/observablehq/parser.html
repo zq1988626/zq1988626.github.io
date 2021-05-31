@@ -2,9 +2,12 @@
 <body class="">
     <textarea id="code" style="width:100%;height:200px;"></textarea>
     <div id="foo"></div>
+    <button id="btnParser">parser</button>
+    <div id="foo2"></div>
     <script type=module>
 
     import {Runtime, Inspector, Library} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+
 
     const runtime = new Runtime(new Library);
     const module = runtime.module();
@@ -12,7 +15,7 @@
     module.variable().define("parser",["require"], require => require("@observablehq/parser"));
     
     let code = document.querySelector("#code");
-    let codestr = `hello = "world"`
+    let codestr = `hello = [1,2,3,html\`world\`]`
     code.value = codestr;
     code.addEventListener("keyup",function(){
         //module.variable().define("code",code.value);
@@ -28,6 +31,26 @@
         const cell = parseCell(code);
         return html`<textarea style="width:100%;height:400px;">${JSON.stringify(cell,null,4)}</textarea>`
     })
+
+    document.getElementById("btnParser").addEventListener("click",function(){
+        //let cell = parseCell(code.value)
+        let variable = module.variable(new Inspector(document.querySelector("#foo2")));
+
+        variable.define("hello",["html"],(html)=>{
+            return html`world`
+        });
+    })
+
+    export default function define(runtime, observer) {
+        const main = runtime.module();
+        main.variable(observer()).define(["md"], function(md){return(
+            md`# npm`
+        )});
+        main.variable(observer("list")).define("list", function(){return(
+            [1,2,3,4]
+        )});
+        return main;
+    }
 
 
     </script>
