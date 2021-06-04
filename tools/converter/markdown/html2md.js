@@ -7,13 +7,58 @@ export default function(html){
 }
 
 
-function P(node){
-    return node.innerHTML;
+function PRE(node){
+    let code = node.querySelectorAll("code");
+    let lang = ""
+    if(code && code.length>0){
+        code = code[0];
+        if(code.className){
+            let _lang = code.className.split(" ").find(d=>d.includes("language"));
+            if(_lang){
+                lang = _lang.split("-")[1]
+            }
+        }
+    }
+    return "\n```"+lang+"\n\
+"+ node.innerText +"\n\
+```\n";
+}
+function LI(node){
+    return SPAN(node);
 }
 
-function H1(node){
-    return "# " + node.innerHTML;
+function UL(node){
+    return [].map.call(node.querySelectorAll("li"),LI).map(txt=>"* "+txt).join("\n")
 }
+
+function OL(node){
+    return [].map.call(node.querySelectorAll("li"),LI).map(txt=>"+. "+txt).join("\n")
+}
+function IMG(node){
+    let src="";
+    let title = "";
+    if(node.src){
+        src = node.src
+    }
+    if(node.title){
+        title = node.title
+    }else if(node.alt){
+        title = node.alt
+    }
+    return `![${title}](${src})`
+}
+
+function P(node){
+    return "\n"+SPAN(node)+"\n";
+}
+
+function H1(node){ return "\n# " + node.innerHTML; }
+function H2(node){ return "\n## " + node.innerHTML; }
+function H3(node){ return "\n### " + node.innerHTML; }
+function H4(node){ return "\n#### " + node.innerHTML; }
+function H5(node){ return "\n##### " + node.innerHTML; }
+function H6(node){ return "\n###### " + node.innerHTML; }
+function H7(node){ return "\n####### " + node.innerHTML; }
 
 function TABLE(node){
     if(node.rows.length===0){return "";}
@@ -29,14 +74,33 @@ function TABLE(node){
     return rev.concat(body).join("\n")
 }
 
+function BR(node){
+    return "\n";
+}
+
+function SPAN(node){
+    return node.innerHTML.replace(/\n/g,"\n\n");
+}
+
 function defaultPaser(node){
-    return node.outerHTML;
+    /*
+    if(node.nodeType===3){
+        if(node.nodeName.toLowerCase()==="#text"){
+            return node.textContent;
+        }
+    }
+    */
+    return node.outerHTML || node.textContent;
 }
 
 const pasers = {
-    H1,P,TABLE
+    BR,IMG,PRE,SPAN,OL,UL,LI,P,TABLE,H1,H2,H3,H4,H5,H6,H7
 }
 
 function exp(node){
-    return pasers[node.tagName]&&pasers[node.tagName](node)||defaultPaser(node);
+    if(pasers[node.tagName]){
+        return pasers[node.tagName](node)
+    }else{
+        return defaultPaser(node)
+    }
 }

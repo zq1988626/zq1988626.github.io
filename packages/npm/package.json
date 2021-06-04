@@ -1,0 +1,19 @@
+{
+  "name": "npm",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "snowpack build",
+    "start": "snowpack dev"
+  },
+  "devDependencies": {
+    "snowpack": "^3.5.4"
+  },
+  "dependencies": {
+    "d3": "^6.7.0",
+    "d3-require": "^1.2.4",
+    "npm-api": "^1.0.1",
+    "systemjs": "^6.9.0"
+  }
+}

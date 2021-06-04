@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+  <head></head>
+  <body>
+    3333
+    <div id="root"></div>
+    <script type="module">
+        import * as c from "./index.js"
+        console.log(window.htmlparser2);
+        import $ from "jquery";
+
+        $(function(){
+          $.getScript("./test.js",function(){
+            
+          })
+        })
+    </script>
+  </body>
+</html>

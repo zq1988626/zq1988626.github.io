@@ -1,0 +1,5 @@
+{
+  "imports": {
+    "htmlparser2": "./htmlparser2.js"
+  }
+}
